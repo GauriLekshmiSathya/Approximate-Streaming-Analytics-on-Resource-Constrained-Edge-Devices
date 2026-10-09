@@ -13,7 +13,7 @@ import json
 import os
 import resource
 import time
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Tuple, Dict, List
 
 
 def get_peak_rss_mb() -> float:
