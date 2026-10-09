@@ -186,3 +186,72 @@ class TestValueExtractionFlexibility:
         assert snap_s1 is not None
         matching_in_sample = sum(1 for r in snap_s1.samples if r["temp"] >= 10.0)
         assert filtered_cnt == matching_in_sample * snap_s1.weight
+
+
+class TestAggregatorErrorHandlingAndEdgeCases:
+    """Validate exceptions and boundary handling in aggregators."""
+
+    def test_invalid_target_type_raises_typeerror(self):
+        with pytest.raises(TypeError, match="Expected OASRS"):
+            approximate_sum("invalid_object")
+
+    def test_dict_missing_specified_value_key_raises_keyerror(self):
+        snap = StratumSnapshot(stratum_id="s1", samples=[{"a": 1}], total_seen=1, capacity=5, weight=1.0)
+        with pytest.raises(KeyError, match="missing numeric field"):
+            approximate_sum(snap, value_key="non_existent")
+
+    def test_object_missing_attribute_raises_attributeerror(self):
+        class Item:
+            pass
+
+        snap = StratumSnapshot(stratum_id="s1", samples=[Item()], total_seen=1, capacity=5, weight=1.0)
+        with pytest.raises(AttributeError, match="missing numeric field"):
+            approximate_sum(snap, value_key="metric")
+
+    def test_dict_without_default_value_key_raises_valueerror(self):
+        snap = StratumSnapshot(stratum_id="s1", samples=[{"foo": 1}], total_seen=1, capacity=5, weight=1.0)
+        with pytest.raises(ValueError, match="without default 'value'/'val' key"):
+            approximate_sum(snap)
+
+    def test_non_convertible_float_raises_typeerror(self):
+        snap = StratumSnapshot(stratum_id="s1", samples=[{"val": "not_a_number"}], total_seen=1, capacity=5, weight=1.0)
+        with pytest.raises(TypeError, match="Could not convert"):
+            approximate_sum(snap, value_key="val")
+
+    def test_invalid_value_key_type_raises_typeerror(self):
+        snap = StratumSnapshot(stratum_id="s1", samples=[1.0], total_seen=1, capacity=5, weight=1.0)
+        with pytest.raises(TypeError, match="value_key must be"):
+            approximate_sum(snap, value_key=123)  # type: ignore
+
+    def test_stratum_breakdowns_on_stratum_snapshot(self):
+        snap = StratumSnapshot(stratum_id="s1", samples=[10.0, 20.0], total_seen=2, capacity=5, weight=1.0)
+        sums = approximate_stratum_sums(snap)
+        means = approximate_stratum_means(snap)
+        assert sums == {"s1": 30.0}
+        assert means == {"s1": 15.0}
+
+    def test_filtered_count_on_single_stratum_snapshot(self):
+        snap_empty = StratumSnapshot(stratum_id="s1", samples=[], total_seen=0, capacity=5, weight=1.0)
+        assert approximate_count(snap_empty, predicate=lambda r: True) == 0.0
+
+        snap_populated = StratumSnapshot(stratum_id="s1", samples=[1, 2, 3, 4], total_seen=8, capacity=4, weight=2.0)
+        assert approximate_count(snap_populated, predicate=lambda x: x > 2) == 4.0  # 2 matching * weight 2.0
+
+    def test_value_extractor_additional_branches(self):
+        # item with "value" key
+        snap_val = StratumSnapshot(stratum_id="s", samples=[{"value": 10.0}], total_seen=1, capacity=5, weight=1.0)
+        assert approximate_sum(snap_val) == 10.0
+
+        # item with attribute
+        class SensorReading:
+            def __init__(self, temp):
+                self.temp = temp
+        snap_obj = StratumSnapshot(stratum_id="s", samples=[SensorReading(25.5)], total_seen=1, capacity=5, weight=1.0)
+        assert approximate_sum(snap_obj, value_key="temp") == 25.5
+
+        # item of unsupported type without value_key
+        snap_unsupported = StratumSnapshot(stratum_id="s", samples=["string_item"], total_seen=1, capacity=5, weight=1.0)
+        with pytest.raises(TypeError, match="Cannot infer numeric value"):
+            approximate_sum(snap_unsupported)
+
+

@@ -66,12 +66,12 @@ For $X$ strata $\{S_1, \dots, S_X\}$, with $Y_i = |R_i| \le N_i$ sampled values 
 | **Phase 1** | **Reservoir & Stratum** | Single-reservoir sampling (Alg. 1) & Stratum tracking ($C_i, N_i, Y_i, W_i$) | `models.py`, `reservoir.py`, `strata.py`, `test_reservoir.py`, `test_strata.py` | **COMPLETED** |
 | **Phase 2** | **OASRS Multi-Strata** | Online Adaptive Stratified Reservoir Sampling orchestrator (Alg. 3) | `oasrs.py`, `test_oasrs.py`, `test_stratification.py` | **COMPLETED** |
 | **Phase 3** | **Weighted Aggregations** | Linear queries ($\widehat{SUM}, \widehat{MEAN}, \widehat{COUNT}$) using stratum weights | `aggregators.py`, `test_aggregators.py`, `test_weights.py` | **COMPLETED** |
-| **Phase 4** | **Variance & Error Estimation** | Finite-population stratified variance & confidence intervals | `estimators.py`, `test_estimators.py` | Queued |
-| **Phase 5** | **Windowing Abstraction** | Sliding and tumbling window processing models | `windows.py`, `test_windows.py` | Queued |
-| **Phase 6** | **Comprehensive Testing** | End-to-end invariant validation, edge cases, skew scenarios | Extended tests in `tests/` | Queued |
-| **Phase 7** | **Synthetic Data Generators** | Gaussian, Poisson, Uniform, and skewed streams from paper §5.1 & §5.7 | `examples/synthetic_stream.py` | Queued |
-| **Phase 8** | **SRS vs OASRS Comparison** | Simple Random Sampling baseline to quantify stratification advantage | `benchmarks/benchmark_accuracy.py` | Queued |
-| **Phase 9** | **Resource & Profiling Instrumentation** | Latency, throughput, CPU, RSS memory benchmarks & CSV/JSON export | `benchmarks/benchmark_sampling.py`, `benchmark_resources.py` | Queued |
+| **Phase 4** | **Variance & Error Estimation** | Finite-population stratified variance & confidence intervals | `estimators.py`, `test_estimators.py` | **COMPLETED** |
+| **Phase 5** | **Windowing Abstraction** | Sliding and tumbling window processing models | `windows.py`, `test_windows.py` | **COMPLETED** |
+| **Phase 6** | **Comprehensive Testing** | End-to-end invariant validation, edge cases, skew scenarios | `test_comprehensive_invariants.py` | **COMPLETED** |
+| **Phase 7** | **Synthetic Data Generators** | Gaussian, Poisson, Uniform, and skewed streams from paper §5.1 & §5.7 | `synthetic.py`, `synthetic_stream.py`, `run_baseline.py`, `test_synthetic.py` | **COMPLETED** |
+| **Phase 8** | **SRS vs OASRS Comparison** | Simple Random Sampling baseline to quantify stratification advantage | `srs.py`, `test_srs.py`, `benchmark_accuracy.py` | **COMPLETED** |
+| **Phase 9** | **Resource & Profiling Instrumentation** | Latency, throughput, CPU, RSS memory benchmarks & CSV/JSON export | `metrics.py`, `test_metrics.py`, `benchmark_sampling.py`, `benchmark_resources.py` | **COMPLETED** |
 
 ---
 

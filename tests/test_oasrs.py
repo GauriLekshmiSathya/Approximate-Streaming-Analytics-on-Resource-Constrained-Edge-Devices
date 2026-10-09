@@ -144,3 +144,40 @@ class TestOASRSStateAndWeights:
         assert sampler.total_seen == 0
         assert sampler.sample_size == 0
         assert sampler.num_strata == 0
+
+    def test_object_missing_attribute_raises_attributeerror(self):
+        class Obj:
+            pass
+
+        sampler = OASRS[Obj](sample_size=5, stratum_key="sensor_id")
+        with pytest.raises(AttributeError, match="missing stratum attribute"):
+            sampler.update(Obj())
+
+    def test_stratum_capacity_invalid_callable_raises(self):
+        sampler = OASRS[dict](sample_size=5, stratum_key="s", stratum_capacity=lambda sid: -1)
+        with pytest.raises(ValueError, match="invalid capacity"):
+            sampler.update({"s": "1"})
+
+    def test_stratum_capacity_as_int(self):
+        sampler = OASRS[dict](sample_size=5, stratum_key="s", stratum_capacity=8)
+        sampler.update({"s": "1"})
+        assert sampler.get_stratum("1").capacity == 8
+
+    def test_sampler_len_and_repr(self):
+        sampler = OASRS[dict](sample_size=5, stratum_key="s")
+        sampler.update({"s": "1"})
+        assert len(sampler) == 1
+        assert "OASRS" in repr(sampler)
+
+    def test_snapshot_iteration_len_getitem_and_weights(self):
+        sampler = OASRS[dict](sample_size=5, stratum_key="s")
+        sampler.update({"s": "A"})
+        sampler.update({"s": "B"})
+        snap = sampler.snapshot()
+
+        assert len(snap) == 2
+        assert snap["A"].stratum_id == "A"
+        assert list(snap.weights.keys()) == ["A", "B"]
+        iter_strata = [s.stratum_id for s in snap]
+        assert iter_strata == ["A", "B"]
+

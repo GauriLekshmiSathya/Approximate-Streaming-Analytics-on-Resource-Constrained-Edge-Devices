@@ -102,6 +102,11 @@ class TestReservoirInvariants:
         assert r.items == [0, 1, 2]
         assert r.sample_size == 3
 
+    def test_reservoir_repr(self):
+        r = Reservoir[int](capacity=5)
+        assert "Reservoir" in repr(r)
+
+
 
 class TestReservoirStatisticalProperties:
     """Validate that Algorithm 1 yields a uniform random sample."""

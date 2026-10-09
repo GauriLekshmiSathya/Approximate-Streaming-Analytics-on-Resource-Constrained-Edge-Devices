@@ -113,3 +113,15 @@ class TestStratumSnapshotAndReset:
         assert s.sample_size == 0
         assert s.weight == 1.0
         assert s.samples == []
+
+    def test_stratum_repr_and_len(self):
+        s = Stratum[int](stratum_id="sensor_C", capacity=5)
+        s.update(10)
+        assert len(s) == 1
+        assert "Stratum" in repr(s)
+
+    def test_empty_stratum_snapshot_sampling_fraction(self):
+        s = Stratum[int](stratum_id="sensor_D", capacity=5)
+        snap = s.snapshot()
+        assert snap.sampling_fraction == 1.0
+
