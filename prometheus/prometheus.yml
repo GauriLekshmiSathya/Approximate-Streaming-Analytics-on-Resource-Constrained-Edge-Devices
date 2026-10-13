@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 2s      # fine-grained, we want to see rate changes quickly
+
+scrape_configs:
+  - job_name: producer
+    static_configs:
+      - targets: ["host.docker.internal:8000"]
+  - job_name: archiver
+    static_configs:
+      - targets: ["host.docker.internal:8001"]
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
