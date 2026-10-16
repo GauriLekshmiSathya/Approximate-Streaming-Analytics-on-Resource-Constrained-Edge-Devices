@@ -14,13 +14,16 @@ from streamapprox.aggregators import (
     approximate_sum,
 )
 from streamapprox.estimators import (
+    EmpiricalError,
     calculate_relative_error,
+    compare_with_exact,
     estimate_mean,
     estimate_mean_error,
     estimate_sum,
     estimate_sum_error,
     stratum_sample_variance,
 )
+from streamapprox.control import AdaptiveController, CostFunction, LinearCostFunction
 from streamapprox.metrics import (
     BenchmarkResult,
     BenchmarkTimer,
@@ -34,6 +37,8 @@ from streamapprox.models import (
     WindowResult,
 )
 from streamapprox.oasrs import OASRS
+from streamapprox.va_oasrs import VAOASRS
+from streamapprox.dv_oasrs import DVOASRS
 from streamapprox.reservoir import Reservoir
 from streamapprox.srs import SRSSampler
 from streamapprox.strata import Stratum
@@ -55,6 +60,8 @@ __version__ = "0.1.0"
 
 __all__ = [
     "OASRS",
+    "VAOASRS",
+    "DVOASRS",
     "OASRSSnapshot",
     "Reservoir",
     "Stratum",
@@ -80,6 +87,11 @@ __all__ = [
     "estimate_mean_error",
     "stratum_sample_variance",
     "calculate_relative_error",
+    "EmpiricalError",
+    "compare_with_exact",
+    "CostFunction",
+    "LinearCostFunction",
+    "AdaptiveController",
     "StratumSpec",
     "generate_uniform_stream",
     "generate_gaussian_stream",

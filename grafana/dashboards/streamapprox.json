@@ -1,0 +1,21 @@
+{
+  "id": null,
+  "uid": "streamapprox-main",
+  "title": "StreamApprox Pipeline",
+  "tags": ["streamapprox", "kafka", "oasrs"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "5s",
+  "time": {"from": "now-30m", "to": "now"},
+  "panels": [
+    {"id": 1, "type": "timeseries", "title": "Producer input rate", "datasource": {"type": "prometheus", "uid": "prometheus"}, "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8}, "targets": [{"expr": "rate(producer_messages_total[1m])", "legendFormat": "records/s", "refId": "A"}]},
+    {"id": 2, "type": "timeseries", "title": "Sampler input rate", "datasource": {"type": "prometheus", "uid": "prometheus"}, "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8}, "targets": [{"expr": "sampler_input_rate", "legendFormat": "records/s", "refId": "A"}]},
+    {"id": 3, "type": "stat", "title": "Completed windows", "datasource": {"type": "prometheus", "uid": "prometheus"}, "gridPos": {"x": 0, "y": 8, "w": 6, "h": 5}, "targets": [{"expr": "sampler_windows_total", "refId": "A"}]},
+    {"id": 4, "type": "stat", "title": "Samples in latest window", "datasource": {"type": "prometheus", "uid": "prometheus"}, "gridPos": {"x": 6, "y": 8, "w": 6, "h": 5}, "targets": [{"expr": "sampler_sampled_items_current", "refId": "A"}]},
+    {"id": 5, "type": "timeseries", "title": "Per-window empirical mean accuracy loss", "datasource": {"type": "prometheus", "uid": "prometheus"}, "gridPos": {"x": 12, "y": 8, "w": 6, "h": 5}, "targets": [{"expr": "sampler_mean_accuracy_loss", "legendFormat": "relative error", "refId": "A"}]},
+    {"id": 6, "type": "timeseries", "title": "Estimated mean standard error", "datasource": {"type": "prometheus", "uid": "prometheus"}, "gridPos": {"x": 18, "y": 8, "w": 6, "h": 5}, "targets": [{"expr": "sampler_mean_estimated_standard_error", "legendFormat": "standard error", "refId": "A"}]},
+    {"id": 7, "type": "timeseries", "title": "Adaptive sample capacity per stratum", "datasource": {"type": "prometheus", "uid": "prometheus"}, "gridPos": {"x": 0, "y": 13, "w": 12, "h": 6}, "targets": [{"expr": "sampler_capacity_per_stratum", "legendFormat": "N_i", "refId": "A"}]},
+    {"id": 8, "type": "timeseries", "title": "Malformed input and publish failures", "datasource": {"type": "prometheus", "uid": "prometheus"}, "gridPos": {"x": 12, "y": 13, "w": 12, "h": 6}, "targets": [{"expr": "increase(sampler_malformed_messages_total[5m])", "legendFormat": "malformed", "refId": "A"}, {"expr": "increase(sampler_publish_errors_total[5m])", "legendFormat": "publish failures", "refId": "B"}]}
+  ]
+}

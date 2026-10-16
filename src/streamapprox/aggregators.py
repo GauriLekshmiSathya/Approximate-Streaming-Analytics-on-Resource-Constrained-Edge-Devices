@@ -161,7 +161,9 @@ def approximate_count(
     """Calculate approximate count of records, optionally filtered by predicate.
 
     Without predicate:
-        Returns exact total_seen (sum_i C_i).
+        Estimates the population count as sum_i W_i * Y_i. For standard
+        OASRS reservoirs this equals sum_i C_i, while keeping COUNT expressed
+        as the same weighted linear query used for filtered counts.
     With predicate:
         Estimates matching records using stratum weights:
         COUNT_hat(pred) = sum_{i=1}^X W_i * sum_{j=1}^{Y_i} 1_{pred}(I_{i,j})
@@ -169,7 +171,9 @@ def approximate_count(
     snap = _resolve_snapshot(snapshot)
 
     if predicate is None:
-        return float(snap.total_seen)
+        if isinstance(snap, StratumSnapshot):
+            return float(snap.sample_size * snap.weight)
+        return float(sum(s.sample_size * s.weight for s in snap.strata.values()))
 
     if isinstance(snap, StratumSnapshot):
         if snap.sample_size == 0 or snap.total_seen == 0:

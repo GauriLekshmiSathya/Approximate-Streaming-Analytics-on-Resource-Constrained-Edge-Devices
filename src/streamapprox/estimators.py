@@ -18,6 +18,7 @@ Formulations:
 """
 
 import math
+from dataclasses import dataclass
 from typing import Any, Callable, Dict, Optional, Union
 
 from streamapprox.aggregators import (
@@ -40,6 +41,24 @@ CONFIDENCE_LEVEL_TO_Z: Dict[float, float] = {
     0.997: 3.0,       # 3-sigma (68-95-99.7 rule)
     0.9973: 3.0,
 }
+
+
+@dataclass(frozen=True)
+class EmpiricalError:
+    """Ground-truth comparison, kept separate from estimated sampling error."""
+
+    exact_result: float
+    approximate_result: float
+    absolute_error: float
+    relative_error: float
+    accuracy_loss: float
+
+
+def compare_with_exact(approximate: float, exact: float) -> EmpiricalError:
+    """Compare an estimate to exact ground truth; zero exact values are explicit."""
+    absolute = abs(float(approximate) - float(exact))
+    relative = absolute / abs(float(exact)) if exact != 0 else (0.0 if absolute == 0 else math.inf)
+    return EmpiricalError(float(exact), float(approximate), absolute, relative, relative)
 
 
 def _resolve_z_score(

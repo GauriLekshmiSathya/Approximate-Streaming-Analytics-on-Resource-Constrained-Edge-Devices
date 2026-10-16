@@ -96,6 +96,8 @@ def ensure_topics(bootstrap=BOOTSTRAP, topics=None, partitions=NUM_PARTITIONS):
     existing = set(admin.list_topics(timeout=15).topics)
     new = [NewTopic(t, num_partitions=partitions, replication_factor=1)
            for t in topics if t not in existing]
+    if not new:
+        return
     for topic, fut in admin.create_topics(new).items():
         try:
             fut.result()

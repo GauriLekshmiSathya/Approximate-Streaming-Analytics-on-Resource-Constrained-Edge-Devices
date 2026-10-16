@@ -12,6 +12,7 @@ from dataclasses import asdict, dataclass, field
 import json
 import os
 import resource
+import sys
 import time
 from typing import Any, Tuple, Dict, List
 
@@ -19,8 +20,9 @@ from typing import Any, Tuple, Dict, List
 def get_peak_rss_mb() -> float:
     """Return peak Resident Set Size (RSS) memory in megabytes."""
     usage = resource.getrusage(resource.RUSAGE_SELF)
-    # On Linux, ru_maxrss is reported in kilobytes
-    return float(usage.ru_maxrss / 1024.0)
+    # Darwin reports bytes; Linux and the BSDs used here report kilobytes.
+    divisor = 1024.0 * 1024.0 if sys.platform == "darwin" else 1024.0
+    return float(usage.ru_maxrss / divisor)
 
 
 @dataclass

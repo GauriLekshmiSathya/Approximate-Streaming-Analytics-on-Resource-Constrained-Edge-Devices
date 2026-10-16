@@ -128,6 +128,20 @@ class EstimationResult:
         """Confidence interval (lower_bound, upper_bound)."""
         return (self.lower_bound, self.upper_bound)
 
+    @property
+    def sigma_ranges(self) -> Dict[int, Tuple[float, float]]:
+        """Statistical ranges at 1σ, 2σ, and 3σ (normal approximation)."""
+        return {
+            sigma: (self.estimate - sigma * self.standard_error,
+                    self.estimate + sigma * self.standard_error)
+            for sigma in (1, 2, 3)
+        }
+
+    @property
+    def sigma_margins(self) -> Dict[int, float]:
+        """Error margins at 1σ, 2σ, and 3σ."""
+        return {sigma: sigma * self.standard_error for sigma in (1, 2, 3)}
+
     def relative_error_bound(self) -> float:
         """Relative error bound = error_bound / |estimate| (handles estimate == 0 safely)."""
         if abs(self.estimate) == 0.0:
@@ -161,6 +175,9 @@ class WindowResult(Generic[T]):
     sum_result: EstimationResult
     mean_result: EstimationResult
     count_result: float
+    exact_sum: Optional[float] = None
+    exact_mean: Optional[float] = None
+    exact_count: Optional[int] = None
 
     @property
     def total_seen(self) -> int:

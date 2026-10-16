@@ -199,3 +199,74 @@ class TestWindowValidationAndEdgeCases:
         assert len(results) == 2
         assert results[0].total_seen == 3
         assert results[1].total_seen == 1
+
+    def test_closed_event_time_window_drops_late_record_and_rejects_nan(self):
+        manager = TimeWindowManager[dict](
+            window_duration=5.0, stratum_key="s", value_key="v", base_time=0.0
+        )
+        manager.update({"s": "A", "v": 1.0}, timestamp=1.0)
+        completed = manager.update({"s": "A", "v": 2.0}, timestamp=6.0)
+        assert completed[0].total_seen == 1
+        manager.update({"s": "A", "v": 99.0}, timestamp=2.0)
+        remaining = manager.flush()
+        assert len(remaining) == 1
+        assert remaining[0].total_seen == 1
+        with pytest.raises(ValueError, match="finite"):
+            manager.update({"s": "A", "v": 3.0}, timestamp=float("nan"))
+
+    def test_evaluation_mode_tracks_exact_window_results_without_retaining_records(self):
+        manager = TimeWindowManager[dict](
+            window_duration=5.0,
+            sample_size=1,
+            stratum_key="s",
+            value_key="v",
+            base_time=0.0,
+            evaluation_mode=True,
+            seed=1,
+        )
+        manager.update({"s": "A", "v": 2.0}, timestamp=1.0)
+        manager.update({"s": "A", "v": 4.0}, timestamp=2.0)
+        result = manager.update({"s": "A", "v": 8.0}, timestamp=6.0)[0]
+        assert result.exact_sum == 6.0
+        assert result.exact_mean == 3.0
+        assert result.exact_count == 2
+        assert result.snapshot.sample_size <= 1
+
+    def test_result_callback_can_adapt_capacity_before_new_window_creation(self):
+        manager = TimeWindowManager[dict](
+            window_duration=5.0,
+            slide_interval=5.0,
+            sample_size=3,
+            stratum_key="s",
+            value_key="v",
+            base_time=0.0,
+        )
+        manager.update({"s": "A", "v": 1.0}, timestamp=1.0)
+        completed = []
+
+        def adapt(result):
+            completed.append(result)
+            manager.set_sample_size(1)
+
+        manager.set_result_callback(adapt)
+        manager.update({"s": "A", "v": 2.0}, timestamp=6.0)
+        assert completed[0].snapshot.strata["A"].capacity == 3
+        active = manager._active_windows[(5.0, 10.0)]
+        assert active.get_stratum("A").capacity == 1
+
+    def test_allowed_lateness_keeps_delayed_event_time_record_in_open_window(self):
+        manager = TimeWindowManager[dict](
+            window_duration=5.0,
+            sample_size=10,
+            stratum_key="s",
+            value_key="v",
+            base_time=0.0,
+            allowed_lateness=10.0,
+        )
+        manager.update({"s": "A", "v": 1.0}, timestamp=1.0)
+        manager.update({"s": "A", "v": 3.0}, timestamp=12.0)
+        manager.update({"s": "A", "v": 5.0}, timestamp=3.0)
+        results = manager.update({"s": "A", "v": 7.0}, timestamp=20.0)
+        first = next(x for x in results if x.window_start == 0.0)
+        assert first.total_seen == 2
+        assert first.sum_result.estimate == 6.0
