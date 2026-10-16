@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500">
+<rect width="100%" height="100%" fill="white"/>
+<text x="450.0" y="25" text-anchor="middle" font-family="sans-serif" font-size="18">Relative error vs within-stratum variance ratio</text>
+<path d="M85 50 V430 H875" stroke="#333" fill="none"/>
+<text x="450.0" y="480" text-anchor="middle" font-family="sans-serif">Maximum/low stratum standard-deviation ratio</text>
+<text transform="translate(20 250.0) rotate(-90)" text-anchor="middle" font-family="sans-serif">Mean relative error</text>
+<path d="M85 430.0 H875" stroke="#ddd"/><text x="80" y="434.0" text-anchor="end" font-size="11">-0.0224</text>
+<path d="M85 354.0 H875" stroke="#ddd"/><text x="80" y="358.0" text-anchor="end" font-size="11">0.0353</text>
+<path d="M85 278.0 H875" stroke="#ddd"/><text x="80" y="282.0" text-anchor="end" font-size="11">0.0931</text>
+<path d="M85 202.0 H875" stroke="#ddd"/><text x="80" y="206.0" text-anchor="end" font-size="11">0.151</text>
+<path d="M85 126.0 H875" stroke="#ddd"/><text x="80" y="130.0" text-anchor="end" font-size="11">0.209</text>
+<path d="M85 50.0 H875" stroke="#ddd"/><text x="80" y="54.0" text-anchor="end" font-size="11">0.266</text>
+<polyline points="85.0,398.3333333333333 92.97979797979798,389.84518419744177 116.91919191919192,379.0211146376772 156.8181818181818,362.168448539914 476.01010101010104,241.48166202830015 875.0,81.66666666666669" fill="none" stroke="#2867a6" stroke-width="3"/>
+<circle cx="85.0" cy="398.3333333333333" r="4" fill="#2867a6"/>
+<circle cx="92.97979797979798" cy="389.84518419744177" r="4" fill="#2867a6"/>
+<circle cx="116.91919191919192" cy="379.0211146376772" r="4" fill="#2867a6"/>
+<circle cx="156.8181818181818" cy="362.168448539914" r="4" fill="#2867a6"/>
+<circle cx="476.01010101010104" cy="241.48166202830015" r="4" fill="#2867a6"/>
+<circle cx="875.0" cy="81.66666666666669" r="4" fill="#2867a6"/>
+<text x="85" y="455" font-family="sans-serif" font-size="12" fill="#2867a6">OASRS</text>
+<polyline points="85.0,393.0782566813179 92.97979797979798,393.81648985074963 116.91919191919192,389.8267447127614 156.8181818181818,376.91798976427447 476.01010101010104,294.2878559865976 875.0,310.0935439447287" fill="none" stroke="#d96b27" stroke-width="3"/>
+<circle cx="85.0" cy="393.0782566813179" r="4" fill="#d96b27"/>
+<circle cx="92.97979797979798" cy="393.81648985074963" r="4" fill="#d96b27"/>
+<circle cx="116.91919191919192" cy="389.8267447127614" r="4" fill="#d96b27"/>
+<circle cx="156.8181818181818" cy="376.91798976427447" r="4" fill="#d96b27"/>
+<circle cx="476.01010101010104" cy="294.2878559865976" r="4" fill="#d96b27"/>
+<circle cx="875.0" cy="310.0935439447287" r="4" fill="#d96b27"/>
+<text x="250" y="455" font-family="sans-serif" font-size="12" fill="#d96b27">VA-OASRS</text>
+</svg>

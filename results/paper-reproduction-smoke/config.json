@@ -1,0 +1,44 @@
+{
+  "paper": "StreamApprox, Middleware 2017, DOI 10.1145/3135974.3135989",
+  "runs": 1,
+  "records_per_run": 1000,
+  "seed": 42,
+  "sampling_fractions": [
+    0.1,
+    0.2,
+    0.4,
+    0.6,
+    0.8
+  ],
+  "arrival_rate_ratios": [
+    [
+      8000,
+      2000,
+      100
+    ],
+    [
+      3000,
+      3000,
+      3000
+    ],
+    [
+      100,
+      2000,
+      8000
+    ]
+  ],
+  "window_sizes_seconds": [
+    10,
+    20,
+    30,
+    40
+  ],
+  "slide_seconds": 5,
+  "not_reproduced": [
+    "Spark Streaming / Flink / native JVM comparisons",
+    "distributed scale-up and scale-out (paper used a 17-node cluster)",
+    "real-world network and NYC taxi case studies",
+    "250/500/1000 ms Spark micro-batch baseline comparison",
+    "paper's adaptive virtual cost function and theoretical guarantees"
+  ]
+}

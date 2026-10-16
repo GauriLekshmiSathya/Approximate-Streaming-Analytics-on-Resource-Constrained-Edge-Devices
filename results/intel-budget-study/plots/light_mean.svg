@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="500">
+<rect width="100%" height="100%" fill="white"/>
+<text x="425.0" y="25" text-anchor="middle" font-family="sans-serif" font-size="18">light_mean: accuracy vs total sample budget</text>
+<path d="M 90 45 V 430 H 820" fill="none" stroke="#333"/>
+<text x="425.0" y="480" text-anchor="middle" font-family="sans-serif">Total sample budget</text>
+<text transform="translate(22 250.0) rotate(-90)" text-anchor="middle" font-family="sans-serif">Mean relative error</text>
+<path d="M 90 430.00 H 820" stroke="#ddd"/>
+<text x="82" y="434.00" text-anchor="end" font-family="sans-serif" font-size="11">0</text>
+<path d="M 90 333.75 H 820" stroke="#ddd"/>
+<text x="82" y="337.75" text-anchor="end" font-family="sans-serif" font-size="11">0.0326</text>
+<path d="M 90 237.50 H 820" stroke="#ddd"/>
+<text x="82" y="241.50" text-anchor="end" font-family="sans-serif" font-size="11">0.0652</text>
+<path d="M 90 141.25 H 820" stroke="#ddd"/>
+<text x="82" y="145.25" text-anchor="end" font-family="sans-serif" font-size="11">0.0977</text>
+<path d="M 90 45.00 H 820" stroke="#ddd"/>
+<text x="82" y="49.00" text-anchor="end" font-family="sans-serif" font-size="11">0.13</text>
+<polyline points="90.00,270.46 194.29,284.67 402.86,353.24 820.00,341.05" fill="none" stroke="#2867a6" stroke-width="3"/>
+<circle cx="90.00" cy="270.46" r="4" fill="#2867a6"/>
+<circle cx="194.29" cy="284.67" r="4" fill="#2867a6"/>
+<circle cx="402.86" cy="353.24" r="4" fill="#2867a6"/>
+<circle cx="820.00" cy="341.05" r="4" fill="#2867a6"/>
+<polyline points="90.00,188.08 194.29,329.43 402.86,344.83 820.00,383.23" fill="none" stroke="#d96b27" stroke-width="3"/>
+<circle cx="90.00" cy="188.08" r="4" fill="#d96b27"/>
+<circle cx="194.29" cy="329.43" r="4" fill="#d96b27"/>
+<circle cx="402.86" cy="344.83" r="4" fill="#d96b27"/>
+<circle cx="820.00" cy="383.23" r="4" fill="#d96b27"/>
+<polyline points="90.00,136.19 194.29,186.18 402.86,80.00 820.00,221.98" fill="none" stroke="#16845b" stroke-width="3"/>
+<circle cx="90.00" cy="136.19" r="4" fill="#16845b"/>
+<circle cx="194.29" cy="186.18" r="4" fill="#16845b"/>
+<circle cx="402.86" cy="80.00" r="4" fill="#16845b"/>
+<circle cx="820.00" cy="221.98" r="4" fill="#16845b"/>
+</svg>

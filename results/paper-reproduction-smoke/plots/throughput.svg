@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520">
+<rect width="100%" height="100%" fill="white"/>
+<text x="420.0" y="25" text-anchor="middle" font-family="sans-serif" font-size="18">Throughput vs sampling fraction</text>
+<path d="M 90 45 V 445 H 815" fill="none" stroke="#333"/>
+<text x="420.0" y="500" text-anchor="middle" font-family="sans-serif" font-size="14">Sampling fraction (%)</text>
+<text transform="translate(20 260.0) rotate(-90)" text-anchor="middle" font-family="sans-serif" font-size="14">Items per second</text>
+<path d="M 90 445.00 H 815" stroke="#ddd"/>
+<text x="82" y="449.00" text-anchor="end" font-family="sans-serif" font-size="11">1.68e+06</text>
+<path d="M 90 345.00 H 815" stroke="#ddd"/>
+<text x="82" y="349.00" text-anchor="end" font-family="sans-serif" font-size="11">2e+09</text>
+<path d="M 90 245.00 H 815" stroke="#ddd"/>
+<text x="82" y="249.00" text-anchor="end" font-family="sans-serif" font-size="11">4e+09</text>
+<path d="M 90 145.00 H 815" stroke="#ddd"/>
+<text x="82" y="149.00" text-anchor="end" font-family="sans-serif" font-size="11">6e+09</text>
+<path d="M 90 45.00 H 815" stroke="#ddd"/>
+<text x="82" y="49.00" text-anchor="end" font-family="sans-serif" font-size="11">8e+09</text>
+<polyline points="90.00,359.45 90.00,143.80 90.00,205.80 815.00,205.80 815.00,145.61 815.00,45.00" fill="none" stroke="#68707a" stroke-width="2.5"/>
+<circle cx="90.00" cy="359.45" r="4" fill="#68707a"/>
+<circle cx="90.00" cy="143.80" r="4" fill="#68707a"/>
+<circle cx="90.00" cy="205.80" r="4" fill="#68707a"/>
+<circle cx="815.00" cy="205.80" r="4" fill="#68707a"/>
+<circle cx="815.00" cy="145.61" r="4" fill="#68707a"/>
+<circle cx="815.00" cy="45.00" r="4" fill="#68707a"/>
+<polyline points="90.00,444.91 90.00,444.86 90.00,444.85 815.00,444.92 815.00,444.92 815.00,444.91" fill="none" stroke="#d96b27" stroke-width="2.5"/>
+<circle cx="90.00" cy="444.91" r="4" fill="#d96b27"/>
+<circle cx="90.00" cy="444.86" r="4" fill="#d96b27"/>
+<circle cx="90.00" cy="444.85" r="4" fill="#d96b27"/>
+<circle cx="815.00" cy="444.92" r="4" fill="#d96b27"/>
+<circle cx="815.00" cy="444.92" r="4" fill="#d96b27"/>
+<circle cx="815.00" cy="444.91" r="4" fill="#d96b27"/>
+<polyline points="90.00,444.97 90.00,444.97 90.00,444.96 815.00,444.99 815.00,445.00 815.00,444.99" fill="none" stroke="#2867a6" stroke-width="2.5"/>
+<circle cx="90.00" cy="444.97" r="4" fill="#2867a6"/>
+<circle cx="90.00" cy="444.97" r="4" fill="#2867a6"/>
+<circle cx="90.00" cy="444.96" r="4" fill="#2867a6"/>
+<circle cx="815.00" cy="444.99" r="4" fill="#2867a6"/>
+<circle cx="815.00" cy="445.00" r="4" fill="#2867a6"/>
+<circle cx="815.00" cy="444.99" r="4" fill="#2867a6"/>
+<path d="M 675 45 h 24" stroke="#68707a" stroke-width="3"/>
+<text x="707" y="49" font-family="sans-serif" font-size="12">Exact</text>
+<path d="M 675 67 h 24" stroke="#d96b27" stroke-width="3"/>
+<text x="707" y="71" font-family="sans-serif" font-size="12">SRS</text>
+<path d="M 675 89 h 24" stroke="#2867a6" stroke-width="3"/>
+<text x="707" y="93" font-family="sans-serif" font-size="12">OASRS</text>
+</svg>

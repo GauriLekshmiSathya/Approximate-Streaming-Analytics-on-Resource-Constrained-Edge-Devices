@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="480">
+<rect width="100%" height="100%" fill="white"/>
+<text x="425" y="25" text-anchor="middle" font-size="18" font-family="sans-serif">Variance and VA-OASRS allocation (variance-skew, budget 200)</text>
+<path d="M80 55 V400 H815" stroke="#333" fill="none"/>
+<text x="425" y="460" text-anchor="middle" font-family="sans-serif">Stratum</text>
+<text transform="translate(22 250) rotate(-90)" text-anchor="middle" font-family="sans-serif">Observed scale (variance or records)</text>
+<rect x="106.46" y="396.61008404450297" width="41.160000000000004" height="3.3899159554970404" fill="#d96b27"/>
+<rect x="153.5" y="380.1914862743748" width="41.160000000000004" height="19.808513725625158" fill="#2867a6"/>
+<text x="135.86" y="420" text-anchor="middle" font-family="sans-serif">S1</text>
+<rect x="253.46" y="396.74220665425304" width="41.160000000000004" height="3.257793345746969" fill="#d96b27"/>
+<rect x="300.5" y="363.68439150302055" width="41.160000000000004" height="36.31560849697946" fill="#2867a6"/>
+<text x="282.86" y="420" text-anchor="middle" font-family="sans-serif">S2</text>
+<rect x="400.46" y="366.7264662628215" width="41.160000000000004" height="33.273533737178525" fill="#d96b27"/>
+<rect x="447.5" y="300.95743137187424" width="41.160000000000004" height="99.04256862812579" fill="#2867a6"/>
+<text x="429.86" y="420" text-anchor="middle" font-family="sans-serif">S3</text>
+<rect x="547.46" y="55.0" width="41.160000000000004" height="345.0" fill="#d96b27"/>
+<rect x="594.5" y="125.98222679551861" width="41.160000000000004" height="274.0177732044814" fill="#2867a6"/>
+<text x="576.86" y="420" text-anchor="middle" font-family="sans-serif">S4</text>
+<rect x="694.46" y="69.60093604856547" width="41.160000000000004" height="330.3990639514345" fill="#d96b27"/>
+<rect x="741.5" y="168.9006732010398" width="41.160000000000004" height="231.0993267989602" fill="#2867a6"/>
+<text x="723.86" y="420" text-anchor="middle" font-family="sans-serif">S5</text>
+<text x="85" y="45" fill="#d96b27" font-family="sans-serif">Orange: sample variance</text>
+<text x="300" y="45" fill="#2867a6" font-family="sans-serif">Blue: allocated capacity</text>
+</svg>

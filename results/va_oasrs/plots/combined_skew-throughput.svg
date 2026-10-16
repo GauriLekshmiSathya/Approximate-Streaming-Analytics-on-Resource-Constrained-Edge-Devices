@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500">
+<rect width="100%" height="100%" fill="white"/>
+<text x="450.0" y="25" text-anchor="middle" font-family="sans-serif" font-size="18">combined_skew: processing throughput vs sample budget</text>
+<path d="M85 50 V430 H875" stroke="#333" fill="none"/>
+<text x="450.0" y="480" text-anchor="middle" font-family="sans-serif">Sample budget (records)</text>
+<text transform="translate(20 250.0) rotate(-90)" text-anchor="middle" font-family="sans-serif">Throughput (input records/s)</text>
+<path d="M85 430.0 H875" stroke="#ddd"/><text x="80" y="434.0" text-anchor="end" font-size="11">1.02e+06</text>
+<path d="M85 354.0 H875" stroke="#ddd"/><text x="80" y="358.0" text-anchor="end" font-size="11">2.52e+06</text>
+<path d="M85 278.0 H875" stroke="#ddd"/><text x="80" y="282.0" text-anchor="end" font-size="11">4.02e+06</text>
+<path d="M85 202.0 H875" stroke="#ddd"/><text x="80" y="206.0" text-anchor="end" font-size="11">5.52e+06</text>
+<path d="M85 126.0 H875" stroke="#ddd"/><text x="80" y="130.0" text-anchor="end" font-size="11">7.02e+06</text>
+<path d="M85 49.99999999999994 H875" stroke="#ddd"/><text x="80" y="53.99999999999994" text-anchor="end" font-size="11">8.51e+06</text>
+<polyline points="85.0,311.15704354472314 251.3157894736842,317.36464849129123 459.2105263157895,332.7084202247152 875.0,343.5086237381365" fill="none" stroke="#2867a6" stroke-width="3"/>
+<circle cx="85.0" cy="311.15704354472314" r="4" fill="#2867a6"/>
+<circle cx="251.3157894736842" cy="317.36464849129123" r="4" fill="#2867a6"/>
+<circle cx="459.2105263157895" cy="332.7084202247152" r="4" fill="#2867a6"/>
+<circle cx="875.0" cy="343.5086237381365" r="4" fill="#2867a6"/>
+<text x="85" y="455" font-family="sans-serif" font-size="12" fill="#2867a6">OASRS</text>
+<polyline points="85.0,81.66666666666663 251.3157894736842,162.5921411564217 459.2105263157895,203.7837180925396 875.0,248.6228414156555" fill="none" stroke="#d96b27" stroke-width="3"/>
+<circle cx="85.0" cy="81.66666666666663" r="4" fill="#d96b27"/>
+<circle cx="251.3157894736842" cy="162.5921411564217" r="4" fill="#d96b27"/>
+<circle cx="459.2105263157895" cy="203.7837180925396" r="4" fill="#d96b27"/>
+<circle cx="875.0" cy="248.6228414156555" r="4" fill="#d96b27"/>
+<text x="250" y="455" font-family="sans-serif" font-size="12" fill="#d96b27">Uniform Reservoir</text>
+<polyline points="85.0,394.6458153964216 251.3157894736842,397.1954187677836 459.2105263157895,398.2621564912357 875.0,398.3333333333333" fill="none" stroke="#16845b" stroke-width="3"/>
+<circle cx="85.0" cy="394.6458153964216" r="4" fill="#16845b"/>
+<circle cx="251.3157894736842" cy="397.1954187677836" r="4" fill="#16845b"/>
+<circle cx="459.2105263157895" cy="398.2621564912357" r="4" fill="#16845b"/>
+<circle cx="875.0" cy="398.3333333333333" r="4" fill="#16845b"/>
+<text x="415" y="455" font-family="sans-serif" font-size="12" fill="#16845b">VA-OASRS@500</text>
+</svg>

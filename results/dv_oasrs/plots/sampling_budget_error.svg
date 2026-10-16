@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="590" viewBox="0 0 960 590">
+<rect width="100%" height="100%" fill="white"/>
+<text x="480.0" y="30" text-anchor="middle" font-family="sans-serif" font-size="20">Variance-skew stream: error vs sample budget</text>
+<path d="M 100 490.0 H 925" stroke="#e5e7eb"/>
+<text x="88" y="494.0" text-anchor="end" font-family="sans-serif" font-size="12">-0.000321</text>
+<path d="M 100 403.6 H 925" stroke="#e5e7eb"/>
+<text x="88" y="407.6" text-anchor="end" font-family="sans-serif" font-size="12">0.00328</text>
+<path d="M 100 317.2 H 925" stroke="#e5e7eb"/>
+<text x="88" y="321.2" text-anchor="end" font-family="sans-serif" font-size="12">0.00688</text>
+<path d="M 100 230.8 H 925" stroke="#e5e7eb"/>
+<text x="88" y="234.8" text-anchor="end" font-family="sans-serif" font-size="12">0.0105</text>
+<path d="M 100 144.4 H 925" stroke="#e5e7eb"/>
+<text x="88" y="148.4" text-anchor="end" font-family="sans-serif" font-size="12">0.0141</text>
+<path d="M 100 58.0 H 925" stroke="#e5e7eb"/>
+<text x="88" y="62.0" text-anchor="end" font-family="sans-serif" font-size="12">0.0177</text>
+<path d="M 100 58 V 490 H 925" fill="none" stroke="#333" stroke-width="1.3"/>
+<text x="480.0" y="568" text-anchor="middle" font-family="sans-serif" font-size="14">Global sampling budget (records)</text>
+<text transform="translate(25 295.0) rotate(-90)" text-anchor="middle" font-family="sans-serif" font-size="14">Mean relative error (unitless)</text>
+<polyline points="100.0,259.5 273.7,409.1 490.8,402.6 925.0,441.4" fill="none" stroke="#245b9e" stroke-width="2.7"/>
+<path d="M 100.0 259.5 V 259.5 M 96.0 259.5 H 104.0 M 96.0 259.5 H 104.0" stroke="#245b9e"/>
+<circle cx="100.0" cy="259.5" r="4" fill="#245b9e"/>
+<path d="M 273.7 409.1 V 409.1 M 269.7 409.1 H 277.7 M 269.7 409.1 H 277.7" stroke="#245b9e"/>
+<circle cx="273.7" cy="409.1" r="4" fill="#245b9e"/>
+<path d="M 490.8 402.6 V 402.6 M 486.8 402.6 H 494.8 M 486.8 402.6 H 494.8" stroke="#245b9e"/>
+<circle cx="490.8" cy="402.6" r="4" fill="#245b9e"/>
+<path d="M 925.0 441.4 V 441.4 M 921.0 441.4 H 929.0 M 921.0 441.4 H 929.0" stroke="#245b9e"/>
+<circle cx="925.0" cy="441.4" r="4" fill="#245b9e"/>
+<polyline points="100.0,231.7 273.7,356.7 490.8,403.5 925.0,460.8" fill="none" stroke="#d06425" stroke-width="2.7"/>
+<path d="M 100.0 231.7 V 231.7 M 96.0 231.7 H 104.0 M 96.0 231.7 H 104.0" stroke="#d06425"/>
+<circle cx="100.0" cy="231.7" r="4" fill="#d06425"/>
+<path d="M 273.7 356.7 V 356.7 M 269.7 356.7 H 277.7 M 269.7 356.7 H 277.7" stroke="#d06425"/>
+<circle cx="273.7" cy="356.7" r="4" fill="#d06425"/>
+<path d="M 490.8 403.5 V 403.5 M 486.8 403.5 H 494.8 M 486.8 403.5 H 494.8" stroke="#d06425"/>
+<circle cx="490.8" cy="403.5" r="4" fill="#d06425"/>
+<path d="M 925.0 460.8 V 460.8 M 921.0 460.8 H 929.0 M 921.0 460.8 H 929.0" stroke="#d06425"/>
+<circle cx="925.0" cy="460.8" r="4" fill="#d06425"/>
+<polyline points="100.0,216.2 273.7,421.6 490.8,443.9 925.0,443.3" fill="none" stroke="#16845b" stroke-width="2.7"/>
+<path d="M 100.0 216.2 V 216.2 M 96.0 216.2 H 104.0 M 96.0 216.2 H 104.0" stroke="#16845b"/>
+<circle cx="100.0" cy="216.2" r="4" fill="#16845b"/>
+<path d="M 273.7 421.6 V 421.6 M 269.7 421.6 H 277.7 M 269.7 421.6 H 277.7" stroke="#16845b"/>
+<circle cx="273.7" cy="421.6" r="4" fill="#16845b"/>
+<path d="M 490.8 443.9 V 443.9 M 486.8 443.9 H 494.8 M 486.8 443.9 H 494.8" stroke="#16845b"/>
+<circle cx="490.8" cy="443.9" r="4" fill="#16845b"/>
+<path d="M 925.0 443.3 V 443.3 M 921.0 443.3 H 929.0 M 921.0 443.3 H 929.0" stroke="#16845b"/>
+<circle cx="925.0" cy="443.3" r="4" fill="#16845b"/>
+<polyline points="100.0,96.6 273.7,350.4 490.8,335.0 925.0,394.6" fill="none" stroke="#8953a6" stroke-width="2.7"/>
+<path d="M 100.0 96.6 V 96.6 M 96.0 96.6 H 104.0 M 96.0 96.6 H 104.0" stroke="#8953a6"/>
+<circle cx="100.0" cy="96.6" r="4" fill="#8953a6"/>
+<path d="M 273.7 350.4 V 350.4 M 269.7 350.4 H 277.7 M 269.7 350.4 H 277.7" stroke="#8953a6"/>
+<circle cx="273.7" cy="350.4" r="4" fill="#8953a6"/>
+<path d="M 490.8 335.0 V 335.0 M 486.8 335.0 H 494.8 M 486.8 335.0 H 494.8" stroke="#8953a6"/>
+<circle cx="490.8" cy="335.0" r="4" fill="#8953a6"/>
+<path d="M 925.0 394.6 V 394.6 M 921.0 394.6 H 929.0 M 921.0 394.6 H 929.0" stroke="#8953a6"/>
+<circle cx="925.0" cy="394.6" r="4" fill="#8953a6"/>
+<text x="100.0" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">200</text>
+<text x="273.7" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">1000</text>
+<text x="490.8" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">2000</text>
+<text x="925.0" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">4000</text>
+<path d="M 100 532 h 22" stroke="#245b9e" stroke-width="3"/>
+<text x="128" y="536" font-family="sans-serif" font-size="12">DV-OASRS@500</text>
+<path d="M 290 532 h 22" stroke="#d06425" stroke-width="3"/>
+<text x="318" y="536" font-family="sans-serif" font-size="12">OASRS</text>
+<path d="M 480 532 h 22" stroke="#16845b" stroke-width="3"/>
+<text x="508" y="536" font-family="sans-serif" font-size="12">Static VA-OASRS@500</text>
+<path d="M 670 532 h 22" stroke="#8953a6" stroke-width="3"/>
+<text x="698" y="536" font-family="sans-serif" font-size="12">Uniform Reservoir</text>
+</svg>

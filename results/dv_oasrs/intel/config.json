@@ -1,0 +1,14 @@
+{
+  "file": "/Users/arjunmnath/code/streaming/data/data.txt",
+  "budgets": [
+    270,
+    540,
+    1080,
+    2160
+  ],
+  "runs": 5,
+  "static_interval": 100000,
+  "dynamic_interval": 10000,
+  "records": 2210084,
+  "strata": 52
+}

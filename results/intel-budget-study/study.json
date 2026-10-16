@@ -1,0 +1,89 @@
+{
+  "dataset": "data/data.txt",
+  "records": 2210084,
+  "strata": 52,
+  "pilot_records_per_stratum": 100,
+  "runs_per_configuration": 5,
+  "seed_start": 42,
+  "budgets": [
+    270,
+    540,
+    1080,
+    2160
+  ],
+  "policies": [
+    "equal",
+    "proportional",
+    "neyman"
+  ],
+  "allocation_note": "Neyman uses pilot N_i * sample standard deviation for temperature; proportional uses pilot population counts. Both require pilot statistics, unlike equal allocation.",
+  "best_configuration": {
+    "query": "temperature_mean",
+    "budget": 270,
+    "policy": "equal",
+    "runs": 5,
+    "mean_relative_error": 0.046456345728567994,
+    "sd_relative_error": 0.025897336849762007,
+    "median_relative_error": 0.03665076531557756,
+    "mean_ci95_coverage": 1.0,
+    "mean_sampled_items": 270.0,
+    "mean_throughput_records_per_second": 184317.8901526385,
+    "mean_estimated_se": 2.2942771680815697
+  },
+  "recommendation_rule": "For temperature mean, choose the lowest realized sample cost meeting mean relative error <= 5.0% and at least 90% empirical 95%-CI coverage; if none meet both, choose lowest error.",
+  "temperature_pareto_front": [
+    {
+      "query": "temperature_mean",
+      "budget": 270,
+      "policy": "equal",
+      "runs": 5,
+      "mean_relative_error": 0.046456345728567994,
+      "sd_relative_error": 0.025897336849762007,
+      "median_relative_error": 0.03665076531557756,
+      "mean_ci95_coverage": 1.0,
+      "mean_sampled_items": 270.0,
+      "mean_throughput_records_per_second": 184317.8901526385,
+      "mean_estimated_se": 2.2942771680815697
+    },
+    {
+      "query": "temperature_mean",
+      "budget": 540,
+      "policy": "equal",
+      "runs": 5,
+      "mean_relative_error": 0.03418788109008244,
+      "sd_relative_error": 0.019066362325342517,
+      "median_relative_error": 0.03057284978305253,
+      "mean_ci95_coverage": 1.0,
+      "mean_sampled_items": 540.0,
+      "mean_throughput_records_per_second": 190468.6153384292,
+      "mean_estimated_se": 1.7096092319350802
+    },
+    {
+      "query": "temperature_mean",
+      "budget": 1080,
+      "policy": "equal",
+      "runs": 5,
+      "mean_relative_error": 0.01797141121080517,
+      "sd_relative_error": 0.015289111456317263,
+      "median_relative_error": 0.016926488347721175,
+      "mean_ci95_coverage": 1.0,
+      "mean_sampled_items": 1080.0,
+      "mean_throughput_records_per_second": 174523.22195471532,
+      "mean_estimated_se": 1.1681528270240689
+    },
+    {
+      "query": "temperature_mean",
+      "budget": 2160,
+      "policy": "equal",
+      "runs": 5,
+      "mean_relative_error": 0.012926566673205348,
+      "sd_relative_error": 0.01275024700246654,
+      "median_relative_error": 0.011556258802372326,
+      "mean_ci95_coverage": 1.0,
+      "mean_sampled_items": 2160.0,
+      "mean_throughput_records_per_second": 193102.23770450437,
+      "mean_estimated_se": 0.8269684991891536
+    }
+  ],
+  "interpretation": "Relative error is empirical against full-dataset exact means. CI coverage is empirical across repeated reservoir seeds. Throughput is single-process Python on this machine and is not comparable to the paper's Spark/Flink cluster figures."
+}

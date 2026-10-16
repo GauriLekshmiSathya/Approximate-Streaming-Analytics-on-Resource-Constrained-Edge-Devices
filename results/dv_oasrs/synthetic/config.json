@@ -1,0 +1,37 @@
+{
+  "output": "results/dv_oasrs/synthetic",
+  "records": 20000,
+  "runs": 5,
+  "budgets": [
+    200,
+    1000,
+    2000,
+    4000
+  ],
+  "intervals": [
+    500,
+    2000
+  ],
+  "variance_ratios": [
+    1.0,
+    2.0,
+    5.0,
+    10.0,
+    50.0,
+    100.0
+  ],
+  "seeds": [
+    11,
+    23,
+    37,
+    53,
+    71
+  ],
+  "datasets": [
+    "uniform",
+    "population_skew",
+    "variance_skew",
+    "combined_skew",
+    "distribution_shift"
+  ]
+}

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520">
+<rect width="100%" height="100%" fill="white"/>
+<text x="450.0" y="28" text-anchor="middle" font-family="sans-serif" font-size="18">variance_skew: relative error vs budget (mean)</text>
+<path d="M 90 55 V 440 H 870" fill="none" stroke="#333"/>
+<text x="450.0" y="500" text-anchor="middle" font-family="sans-serif">Global sample budget (records)</text>
+<text transform="translate(22 260.0) rotate(-90)" text-anchor="middle" font-family="sans-serif">Mean relative error (unitless)</text>
+<path d="M 90 440.00 H 870" stroke="#e5e5e5"/>
+<text x="82" y="444.00" text-anchor="end" font-family="sans-serif" font-size="11">-0.000317</text>
+<path d="M 90 363.00 H 870" stroke="#e5e5e5"/>
+<text x="82" y="367.00" text-anchor="end" font-family="sans-serif" font-size="11">0.0032</text>
+<path d="M 90 286.00 H 870" stroke="#e5e5e5"/>
+<text x="82" y="290.00" text-anchor="end" font-family="sans-serif" font-size="11">0.00672</text>
+<path d="M 90 209.00 H 870" stroke="#e5e5e5"/>
+<text x="82" y="213.00" text-anchor="end" font-family="sans-serif" font-size="11">0.0102</text>
+<path d="M 90 132.00 H 870" stroke="#e5e5e5"/>
+<text x="82" y="136.00" text-anchor="end" font-family="sans-serif" font-size="11">0.0138</text>
+<path d="M 90 55.00 H 870" stroke="#e5e5e5"/>
+<text x="82" y="59.00" text-anchor="end" font-family="sans-serif" font-size="11">0.0173</text>
+<polyline points="90.00,230.03 254.21,366.37 459.47,360.44 870.00,395.78" fill="none" stroke="#2867a6" stroke-width="3"/>
+<circle cx="90.00" cy="230.03" r="4" fill="#2867a6"/>
+<circle cx="254.21" cy="366.37" r="4" fill="#2867a6"/>
+<circle cx="459.47" cy="360.44" r="4" fill="#2867a6"/>
+<circle cx="870.00" cy="395.78" r="4" fill="#2867a6"/>
+<text x="90" y="470" font-family="sans-serif" font-size="12" fill="#2867a6">DV-OASRS@500</text>
+<polyline points="90.00,204.72 254.21,318.61 459.47,361.21 870.00,413.45" fill="none" stroke="#d96b27" stroke-width="3"/>
+<circle cx="90.00" cy="204.72" r="4" fill="#d96b27"/>
+<circle cx="254.21" cy="318.61" r="4" fill="#d96b27"/>
+<circle cx="459.47" cy="361.21" r="4" fill="#d96b27"/>
+<circle cx="870.00" cy="413.45" r="4" fill="#d96b27"/>
+<text x="245" y="470" font-family="sans-serif" font-size="12" fill="#d96b27">OASRS</text>
+<polyline points="90.00,190.58 254.21,377.75 459.47,398.06 870.00,397.52" fill="none" stroke="#16845b" stroke-width="3"/>
+<circle cx="90.00" cy="190.58" r="4" fill="#16845b"/>
+<circle cx="254.21" cy="377.75" r="4" fill="#16845b"/>
+<circle cx="459.47" cy="398.06" r="4" fill="#16845b"/>
+<circle cx="870.00" cy="397.52" r="4" fill="#16845b"/>
+<text x="400" y="470" font-family="sans-serif" font-size="12" fill="#16845b">Static VA-OASRS@500</text>
+<polyline points="90.00,81.55 254.21,312.85 459.47,298.80 870.00,353.15" fill="none" stroke="#8e5aa7" stroke-width="3"/>
+<circle cx="90.00" cy="81.55" r="4" fill="#8e5aa7"/>
+<circle cx="254.21" cy="312.85" r="4" fill="#8e5aa7"/>
+<circle cx="459.47" cy="298.80" r="4" fill="#8e5aa7"/>
+<circle cx="870.00" cy="353.15" r="4" fill="#8e5aa7"/>
+<text x="555" y="470" font-family="sans-serif" font-size="12" fill="#8e5aa7">Uniform Reservoir</text>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="590" viewBox="0 0 960 590">
+<rect width="100%" height="100%" fill="white"/>
+<text x="480.0" y="30" text-anchor="middle" font-family="sans-serif" font-size="20">Mean error under increasing variance heterogeneity</text>
+<path d="M 100 490.0 H 925" stroke="#e5e7eb"/>
+<text x="88" y="494.0" text-anchor="end" font-family="sans-serif" font-size="12">-0.000684</text>
+<path d="M 100 403.6 H 925" stroke="#e5e7eb"/>
+<text x="88" y="407.6" text-anchor="end" font-family="sans-serif" font-size="12">0.00698</text>
+<path d="M 100 317.2 H 925" stroke="#e5e7eb"/>
+<text x="88" y="321.2" text-anchor="end" font-family="sans-serif" font-size="12">0.0146</text>
+<path d="M 100 230.8 H 925" stroke="#e5e7eb"/>
+<text x="88" y="234.8" text-anchor="end" font-family="sans-serif" font-size="12">0.0223</text>
+<path d="M 100 144.4 H 925" stroke="#e5e7eb"/>
+<text x="88" y="148.4" text-anchor="end" font-family="sans-serif" font-size="12">0.03</text>
+<path d="M 100 58.0 H 925" stroke="#e5e7eb"/>
+<text x="88" y="62.0" text-anchor="end" font-family="sans-serif" font-size="12">0.0376</text>
+<path d="M 100 58 V 490 H 925" fill="none" stroke="#333" stroke-width="1.3"/>
+<text x="480.0" y="568" text-anchor="middle" font-family="sans-serif" font-size="14">Highest-to-lowest stratum variance ratio</text>
+<text transform="translate(25 295.0) rotate(-90)" text-anchor="middle" font-family="sans-serif" font-size="14">Mean relative error (unitless)</text>
+<polyline points="100.0,359.2 108.3,297.8 133.3,399.8 175.0,250.1 508.3,309.5 925.0,96.6" fill="none" stroke="#245b9e" stroke-width="2.7"/>
+<path d="M 100.0 437.5 V 281.0 M 96.0 437.5 H 104.0 M 96.0 281.0 H 104.0" stroke="#245b9e"/>
+<circle cx="100.0" cy="359.2" r="4" fill="#245b9e"/>
+<path d="M 108.3 452.5 V 143.2 M 104.3 452.5 H 112.3 M 104.3 143.2 H 112.3" stroke="#245b9e"/>
+<circle cx="108.3" cy="297.8" r="4" fill="#245b9e"/>
+<path d="M 133.3 489.7 V 309.8 M 129.3 489.7 H 137.3 M 129.3 309.8 H 137.3" stroke="#245b9e"/>
+<circle cx="133.3" cy="399.8" r="4" fill="#245b9e"/>
+<path d="M 175.0 488.6 V 11.7 M 171.0 488.6 H 179.0 M 171.0 11.7 H 179.0" stroke="#245b9e"/>
+<circle cx="175.0" cy="250.1" r="4" fill="#245b9e"/>
+<path d="M 508.3 597.5 V 21.6 M 504.3 597.5 H 512.3 M 504.3 21.6 H 512.3" stroke="#245b9e"/>
+<circle cx="508.3" cy="309.5" r="4" fill="#245b9e"/>
+<path d="M 925.0 515.5 V -322.4 M 921.0 515.5 H 929.0 M 921.0 -322.4 H 929.0" stroke="#245b9e"/>
+<circle cx="925.0" cy="96.6" r="4" fill="#245b9e"/>
+<polyline points="100.0,463.6 108.3,414.8 133.3,384.6 175.0,322.0 508.3,107.1 925.0,155.2" fill="none" stroke="#d06425" stroke-width="2.7"/>
+<path d="M 100.0 481.0 V 446.1 M 96.0 481.0 H 104.0 M 96.0 446.1 H 104.0" stroke="#d06425"/>
+<circle cx="100.0" cy="463.6" r="4" fill="#d06425"/>
+<path d="M 108.3 495.8 V 333.7 M 104.3 495.8 H 112.3 M 104.3 333.7 H 112.3" stroke="#d06425"/>
+<circle cx="108.3" cy="414.8" r="4" fill="#d06425"/>
+<path d="M 133.3 454.0 V 315.2 M 129.3 454.0 H 137.3 M 129.3 315.2 H 137.3" stroke="#d06425"/>
+<circle cx="133.3" cy="384.6" r="4" fill="#d06425"/>
+<path d="M 175.0 436.1 V 207.8 M 171.0 436.1 H 179.0 M 171.0 207.8 H 179.0" stroke="#d06425"/>
+<circle cx="175.0" cy="322.0" r="4" fill="#d06425"/>
+<path d="M 508.3 209.1 V 5.2 M 504.3 209.1 H 512.3 M 504.3 5.2 H 512.3" stroke="#d06425"/>
+<circle cx="508.3" cy="107.1" r="4" fill="#d06425"/>
+<path d="M 925.0 551.5 V -241.0 M 921.0 551.5 H 929.0 M 921.0 -241.0 H 929.0" stroke="#d06425"/>
+<circle cx="925.0" cy="155.2" r="4" fill="#d06425"/>
+<polyline points="100.0,418.6 108.3,463.2 133.3,406.3 175.0,398.9 508.3,235.8 925.0,201.1" fill="none" stroke="#16845b" stroke-width="2.7"/>
+<path d="M 100.0 476.9 V 360.2 M 96.0 476.9 H 104.0 M 96.0 360.2 H 104.0" stroke="#16845b"/>
+<circle cx="100.0" cy="418.6" r="4" fill="#16845b"/>
+<path d="M 108.3 475.3 V 451.0 M 104.3 475.3 H 112.3 M 104.3 451.0 H 112.3" stroke="#16845b"/>
+<circle cx="108.3" cy="463.2" r="4" fill="#16845b"/>
+<path d="M 133.3 488.3 V 324.3 M 129.3 488.3 H 137.3 M 129.3 324.3 H 137.3" stroke="#16845b"/>
+<circle cx="133.3" cy="406.3" r="4" fill="#16845b"/>
+<path d="M 175.0 488.1 V 309.7 M 171.0 488.1 H 179.0 M 171.0 309.7 H 179.0" stroke="#16845b"/>
+<circle cx="175.0" cy="398.9" r="4" fill="#16845b"/>
+<path d="M 508.3 382.5 V 89.1 M 504.3 382.5 H 512.3 M 504.3 89.1 H 512.3" stroke="#16845b"/>
+<circle cx="508.3" cy="235.8" r="4" fill="#16845b"/>
+<path d="M 925.0 575.9 V -173.7 M 921.0 575.9 H 929.0 M 921.0 -173.7 H 929.0" stroke="#16845b"/>
+<circle cx="925.0" cy="201.1" r="4" fill="#16845b"/>
+<polyline points="100.0,449.6 108.3,424.9 133.3,389.1 175.0,376.5 508.3,344.4 925.0,348.3" fill="none" stroke="#8953a6" stroke-width="2.7"/>
+<path d="M 100.0 474.1 V 425.0 M 96.0 474.1 H 104.0 M 96.0 425.0 H 104.0" stroke="#8953a6"/>
+<circle cx="100.0" cy="449.6" r="4" fill="#8953a6"/>
+<path d="M 108.3 463.5 V 386.4 M 104.3 463.5 H 112.3 M 104.3 386.4 H 112.3" stroke="#8953a6"/>
+<circle cx="108.3" cy="424.9" r="4" fill="#8953a6"/>
+<path d="M 133.3 485.4 V 292.7 M 129.3 485.4 H 137.3 M 129.3 292.7 H 137.3" stroke="#8953a6"/>
+<circle cx="133.3" cy="389.1" r="4" fill="#8953a6"/>
+<path d="M 175.0 505.0 V 248.0 M 171.0 505.0 H 179.0 M 171.0 248.0 H 179.0" stroke="#8953a6"/>
+<circle cx="175.0" cy="376.5" r="4" fill="#8953a6"/>
+<path d="M 508.3 520.2 V 168.5 M 504.3 520.2 H 512.3 M 504.3 168.5 H 512.3" stroke="#8953a6"/>
+<circle cx="508.3" cy="344.4" r="4" fill="#8953a6"/>
+<path d="M 925.0 541.7 V 154.8 M 921.0 541.7 H 929.0 M 921.0 154.8 H 929.0" stroke="#8953a6"/>
+<circle cx="925.0" cy="348.3" r="4" fill="#8953a6"/>
+<text x="100.0" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">1</text>
+<text x="108.3" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">2</text>
+<text x="133.3" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">5</text>
+<text x="175.0" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">10</text>
+<text x="508.3" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">50</text>
+<text x="925.0" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">100</text>
+<path d="M 100 532 h 22" stroke="#245b9e" stroke-width="3"/>
+<text x="128" y="536" font-family="sans-serif" font-size="12">Uniform Reservoir</text>
+<path d="M 290 532 h 22" stroke="#d06425" stroke-width="3"/>
+<text x="318" y="536" font-family="sans-serif" font-size="12">OASRS</text>
+<path d="M 480 532 h 22" stroke="#16845b" stroke-width="3"/>
+<text x="508" y="536" font-family="sans-serif" font-size="12">Static VA-OASRS</text>
+<path d="M 670 532 h 22" stroke="#8953a6" stroke-width="3"/>
+<text x="698" y="536" font-family="sans-serif" font-size="12">DV-OASRS</text>
+</svg>

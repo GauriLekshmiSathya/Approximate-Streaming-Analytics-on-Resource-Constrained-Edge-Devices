@@ -1,0 +1,70 @@
+{
+  "groups": {
+    "sampling_fraction_arrival_100_2000_8000:Exact": {
+      "runs": 2,
+      "mean_throughput": 6392292492.162704,
+      "mean_accuracy_loss": 0.0,
+      "mean_estimated_error": 0.0
+    },
+    "sampling_fraction_arrival_100_2000_8000:OASRS": {
+      "runs": 2,
+      "mean_throughput": 2208174.165490538,
+      "mean_accuracy_loss": 0.00561018768699732,
+      "mean_estimated_error": 33.80241099260033
+    },
+    "sampling_fraction_arrival_100_2000_8000:SRS": {
+      "runs": 2,
+      "mean_throughput": 4001666.087800433,
+      "mean_accuracy_loss": 0.004708369227845561,
+      "mean_estimated_error": null
+    },
+    "sampling_fraction_arrival_3000_3000_3000:Exact": {
+      "runs": 2,
+      "mean_throughput": 6006214356.301737,
+      "mean_accuracy_loss": 0.0,
+      "mean_estimated_error": 0.0
+    },
+    "sampling_fraction_arrival_3000_3000_3000:OASRS": {
+      "runs": 2,
+      "mean_throughput": 1960084.1867223475,
+      "mean_accuracy_loss": 0.001538524737773275,
+      "mean_estimated_error": 12.936133748474061
+    },
+    "sampling_fraction_arrival_3000_3000_3000:SRS": {
+      "runs": 2,
+      "mean_throughput": 3960071.853247392,
+      "mean_accuracy_loss": 0.057600245818362775,
+      "mean_estimated_error": null
+    },
+    "sampling_fraction_arrival_8000_2000_100:Exact": {
+      "runs": 2,
+      "mean_throughput": 3248491054.359562,
+      "mean_accuracy_loss": 0.0,
+      "mean_estimated_error": 0.0
+    },
+    "sampling_fraction_arrival_8000_2000_100:OASRS": {
+      "runs": 2,
+      "mean_throughput": 2049313.787309878,
+      "mean_accuracy_loss": 0.0012740041345420828,
+      "mean_estimated_error": 0.7052432060570384
+    },
+    "sampling_fraction_arrival_8000_2000_100:SRS": {
+      "runs": 2,
+      "mean_throughput": 3424675.8392501147,
+      "mean_accuracy_loss": 0.12757443875067873,
+      "mean_estimated_error": null
+    },
+    "window_size:Exact": {
+      "runs": 24,
+      "mean_throughput": 214454.45903089677,
+      "mean_accuracy_loss": 0.0,
+      "mean_estimated_error": 0.0
+    },
+    "window_size:OASRS": {
+      "runs": 24,
+      "mean_throughput": 215763.51144076945,
+      "mean_accuracy_loss": 0.007127283394143885,
+      "mean_estimated_error": 34.12039633854662
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="590" viewBox="0 0 960 590">
+<rect width="100%" height="100%" fill="white"/>
+<text x="480.0" y="30" text-anchor="middle" font-family="sans-serif" font-size="20">Empirical 95% interval coverage for mean estimates</text>
+<path d="M 100 490.0 H 925" stroke="#e5e7eb"/>
+<text x="88" y="494.0" text-anchor="end" font-family="sans-serif" font-size="12">-0.02</text>
+<path d="M 100 403.6 H 925" stroke="#e5e7eb"/>
+<text x="88" y="407.6" text-anchor="end" font-family="sans-serif" font-size="12">0.204</text>
+<path d="M 100 317.2 H 925" stroke="#e5e7eb"/>
+<text x="88" y="321.2" text-anchor="end" font-family="sans-serif" font-size="12">0.428</text>
+<path d="M 100 230.8 H 925" stroke="#e5e7eb"/>
+<text x="88" y="234.8" text-anchor="end" font-family="sans-serif" font-size="12">0.652</text>
+<path d="M 100 144.4 H 925" stroke="#e5e7eb"/>
+<text x="88" y="148.4" text-anchor="end" font-family="sans-serif" font-size="12">0.876</text>
+<path d="M 100 58.0 H 925" stroke="#e5e7eb"/>
+<text x="88" y="62.0" text-anchor="end" font-family="sans-serif" font-size="12">1.1</text>
+<path d="M 100 58 V 490 H 925" fill="none" stroke="#333" stroke-width="1.3"/>
+<text x="480.0" y="568" text-anchor="middle" font-family="sans-serif" font-size="14">Global sampling budget (records)</text>
+<text transform="translate(25 295.0) rotate(-90)" text-anchor="middle" font-family="sans-serif" font-size="14">Coverage fraction across five seeds</text>
+<polyline points="100.0,96.6 273.7,96.6 490.8,96.6 925.0,96.6" fill="none" stroke="#245b9e" stroke-width="2.7"/>
+<path d="M 100.0 96.6 V 96.6 M 96.0 96.6 H 104.0 M 96.0 96.6 H 104.0" stroke="#245b9e"/>
+<circle cx="100.0" cy="96.6" r="4" fill="#245b9e"/>
+<path d="M 273.7 96.6 V 96.6 M 269.7 96.6 H 277.7 M 269.7 96.6 H 277.7" stroke="#245b9e"/>
+<circle cx="273.7" cy="96.6" r="4" fill="#245b9e"/>
+<path d="M 490.8 96.6 V 96.6 M 486.8 96.6 H 494.8 M 486.8 96.6 H 494.8" stroke="#245b9e"/>
+<circle cx="490.8" cy="96.6" r="4" fill="#245b9e"/>
+<path d="M 925.0 96.6 V 96.6 M 921.0 96.6 H 929.0 M 921.0 96.6 H 929.0" stroke="#245b9e"/>
+<circle cx="925.0" cy="96.6" r="4" fill="#245b9e"/>
+<polyline points="100.0,173.7 273.7,173.7 490.8,173.7 925.0,96.6" fill="none" stroke="#d06425" stroke-width="2.7"/>
+<path d="M 100.0 173.7 V 173.7 M 96.0 173.7 H 104.0 M 96.0 173.7 H 104.0" stroke="#d06425"/>
+<circle cx="100.0" cy="173.7" r="4" fill="#d06425"/>
+<path d="M 273.7 173.7 V 173.7 M 269.7 173.7 H 277.7 M 269.7 173.7 H 277.7" stroke="#d06425"/>
+<circle cx="273.7" cy="173.7" r="4" fill="#d06425"/>
+<path d="M 490.8 173.7 V 173.7 M 486.8 173.7 H 494.8 M 486.8 173.7 H 494.8" stroke="#d06425"/>
+<circle cx="490.8" cy="173.7" r="4" fill="#d06425"/>
+<path d="M 925.0 96.6 V 96.6 M 921.0 96.6 H 929.0 M 921.0 96.6 H 929.0" stroke="#d06425"/>
+<circle cx="925.0" cy="96.6" r="4" fill="#d06425"/>
+<polyline points="100.0,173.7 273.7,96.6 490.8,96.6 925.0,96.6" fill="none" stroke="#16845b" stroke-width="2.7"/>
+<path d="M 100.0 173.7 V 173.7 M 96.0 173.7 H 104.0 M 96.0 173.7 H 104.0" stroke="#16845b"/>
+<circle cx="100.0" cy="173.7" r="4" fill="#16845b"/>
+<path d="M 273.7 96.6 V 96.6 M 269.7 96.6 H 277.7 M 269.7 96.6 H 277.7" stroke="#16845b"/>
+<circle cx="273.7" cy="96.6" r="4" fill="#16845b"/>
+<path d="M 490.8 96.6 V 96.6 M 486.8 96.6 H 494.8 M 486.8 96.6 H 494.8" stroke="#16845b"/>
+<circle cx="490.8" cy="96.6" r="4" fill="#16845b"/>
+<path d="M 925.0 96.6 V 96.6 M 921.0 96.6 H 929.0 M 921.0 96.6 H 929.0" stroke="#16845b"/>
+<circle cx="925.0" cy="96.6" r="4" fill="#16845b"/>
+<text x="100.0" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">200</text>
+<text x="273.7" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">1000</text>
+<text x="490.8" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">2000</text>
+<text x="925.0" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">4000</text>
+<path d="M 100 532 h 22" stroke="#245b9e" stroke-width="3"/>
+<text x="128" y="536" font-family="sans-serif" font-size="12">DV-OASRS@500</text>
+<path d="M 290 532 h 22" stroke="#d06425" stroke-width="3"/>
+<text x="318" y="536" font-family="sans-serif" font-size="12">OASRS</text>
+<path d="M 480 532 h 22" stroke="#16845b" stroke-width="3"/>
+<text x="508" y="536" font-family="sans-serif" font-size="12">Static VA-OASRS@500</text>
+</svg>

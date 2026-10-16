@@ -1,0 +1,21 @@
+{
+  "records": 400000,
+  "budget": 300,
+  "seeds": [
+    7,
+    11,
+    23,
+    37,
+    53
+  ],
+  "interval": 10000,
+  "output": "results/dv_oasrs/late-strata",
+  "strata": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6"
+  ]
+}
