@@ -11,19 +11,68 @@ Fulfills Phase 9, Section 11, and Section 14 of project requirements:
 from dataclasses import asdict, dataclass, field
 import json
 import os
-import resource
+# import resource
+# import sys
+
+
 import sys
+
+if sys.platform != "win32":
+    import resource
+
+
 import time
 from typing import Any, Tuple, Dict, List
 
 
+# def get_peak_rss_mb() -> float:
+#     """Return peak Resident Set Size (RSS) memory in megabytes."""
+#     usage = resource.getrusage(resource.RUSAGE_SELF)
+#     # Darwin reports bytes; Linux and the BSDs used here report kilobytes.
+#     divisor = 1024.0 * 1024.0 if sys.platform == "darwin" else 1024.0
+#     return float(usage.ru_maxrss / divisor)
+
+
+
 def get_peak_rss_mb() -> float:
     """Return peak Resident Set Size (RSS) memory in megabytes."""
+    if sys.platform == "win32":
+        import ctypes
+        from ctypes import wintypes
+
+        class PROCESS_MEMORY_COUNTERS(ctypes.Structure):
+            _fields_ = [
+                ("cb", wintypes.DWORD),
+                ("PageFaultCount", wintypes.DWORD),
+                ("PeakWorkingSetSize", ctypes.c_size_t),
+                ("WorkingSetSize", ctypes.c_size_t),
+                ("QuotaPeakPagedPoolUsage", ctypes.c_size_t),
+                ("QuotaPagedPoolUsage", ctypes.c_size_t),
+                ("QuotaPeakNonPagedPoolUsage", ctypes.c_size_t),
+                ("QuotaNonPagedPoolUsage", ctypes.c_size_t),
+                ("PagefileUsage", ctypes.c_size_t),
+                ("PeakPagefileUsage", ctypes.c_size_t),
+            ]
+
+        counters = PROCESS_MEMORY_COUNTERS()
+        counters.cb = ctypes.sizeof(counters)
+        process = ctypes.windll.kernel32.GetCurrentProcess()
+        get_info = ctypes.windll.psapi.GetProcessMemoryInfo
+        get_info.argtypes = [
+            wintypes.HANDLE,
+            ctypes.POINTER(PROCESS_MEMORY_COUNTERS),
+            wintypes.DWORD,
+        ]
+        get_info.restype = wintypes.BOOL
+
+        if get_info(process, ctypes.byref(counters), counters.cb):
+            return counters.PeakWorkingSetSize / (1024.0 * 1024.0)
+
+        raise ctypes.WinError()
+
     usage = resource.getrusage(resource.RUSAGE_SELF)
-    # Darwin reports bytes; Linux and the BSDs used here report kilobytes.
     divisor = 1024.0 * 1024.0 if sys.platform == "darwin" else 1024.0
     return float(usage.ru_maxrss / divisor)
-
 
 @dataclass
 class BenchmarkResult:

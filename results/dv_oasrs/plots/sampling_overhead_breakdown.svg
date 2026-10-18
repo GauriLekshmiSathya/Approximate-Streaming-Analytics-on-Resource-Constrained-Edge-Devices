@@ -2,47 +2,47 @@
 <rect width="100%" height="100%" fill="white"/>
 <text x="480.0" y="30" text-anchor="middle" font-family="sans-serif" font-size="20">DV-OASRS instrumented component time</text>
 <path d="M 100 490.0 H 925" stroke="#e5e7eb"/>
-<text x="88" y="494.0" text-anchor="end" font-family="sans-serif" font-size="12">-0.00706</text>
+<text x="88" y="494.0" text-anchor="end" font-family="sans-serif" font-size="12">-0.0127</text>
 <path d="M 100 403.6 H 925" stroke="#e5e7eb"/>
-<text x="88" y="407.6" text-anchor="end" font-family="sans-serif" font-size="12">0.072</text>
+<text x="88" y="407.6" text-anchor="end" font-family="sans-serif" font-size="12">0.129</text>
 <path d="M 100 317.2 H 925" stroke="#e5e7eb"/>
-<text x="88" y="321.2" text-anchor="end" font-family="sans-serif" font-size="12">0.151</text>
+<text x="88" y="321.2" text-anchor="end" font-family="sans-serif" font-size="12">0.271</text>
 <path d="M 100 230.8 H 925" stroke="#e5e7eb"/>
-<text x="88" y="234.8" text-anchor="end" font-family="sans-serif" font-size="12">0.23</text>
+<text x="88" y="234.8" text-anchor="end" font-family="sans-serif" font-size="12">0.413</text>
 <path d="M 100 144.4 H 925" stroke="#e5e7eb"/>
-<text x="88" y="148.4" text-anchor="end" font-family="sans-serif" font-size="12">0.309</text>
+<text x="88" y="148.4" text-anchor="end" font-family="sans-serif" font-size="12">0.554</text>
 <path d="M 100 58.0 H 925" stroke="#e5e7eb"/>
-<text x="88" y="62.0" text-anchor="end" font-family="sans-serif" font-size="12">0.388</text>
+<text x="88" y="62.0" text-anchor="end" font-family="sans-serif" font-size="12">0.696</text>
 <path d="M 100 58 V 490 H 925" fill="none" stroke="#333" stroke-width="1.3"/>
 <text x="480.0" y="568" text-anchor="middle" font-family="sans-serif" font-size="14">Global sampling budget (records)</text>
 <text transform="translate(25 295.0) rotate(-90)" text-anchor="middle" font-family="sans-serif" font-size="14">Component time (microseconds/input record)</text>
-<polyline points="100.0,197.5 273.7,189.3 490.8,193.4 925.0,190.6" fill="none" stroke="#245b9e" stroke-width="2.7"/>
-<path d="M 100.0 207.7 V 187.3 M 96.0 207.7 H 104.0 M 96.0 187.3 H 104.0" stroke="#245b9e"/>
-<circle cx="100.0" cy="197.5" r="4" fill="#245b9e"/>
-<path d="M 273.7 205.5 V 173.0 M 269.7 205.5 H 277.7 M 269.7 173.0 H 277.7" stroke="#245b9e"/>
-<circle cx="273.7" cy="189.3" r="4" fill="#245b9e"/>
-<path d="M 490.8 206.1 V 180.7 M 486.8 206.1 H 494.8 M 486.8 180.7 H 494.8" stroke="#245b9e"/>
-<circle cx="490.8" cy="193.4" r="4" fill="#245b9e"/>
-<path d="M 925.0 201.6 V 179.5 M 921.0 201.6 H 929.0 M 921.0 179.5 H 929.0" stroke="#245b9e"/>
-<circle cx="925.0" cy="190.6" r="4" fill="#245b9e"/>
-<polyline points="100.0,464.2 273.7,461.7 490.8,463.0 925.0,461.6" fill="none" stroke="#d06425" stroke-width="2.7"/>
-<path d="M 100.0 466.0 V 462.4 M 96.0 466.0 H 104.0 M 96.0 462.4 H 104.0" stroke="#d06425"/>
-<circle cx="100.0" cy="464.2" r="4" fill="#d06425"/>
-<path d="M 273.7 464.8 V 458.7 M 269.7 464.8 H 277.7 M 269.7 458.7 H 277.7" stroke="#d06425"/>
-<circle cx="273.7" cy="461.7" r="4" fill="#d06425"/>
-<path d="M 490.8 464.9 V 461.0 M 486.8 464.9 H 494.8 M 486.8 461.0 H 494.8" stroke="#d06425"/>
-<circle cx="490.8" cy="463.0" r="4" fill="#d06425"/>
-<path d="M 925.0 463.3 V 459.9 M 921.0 463.3 H 929.0 M 921.0 459.9 H 929.0" stroke="#d06425"/>
-<circle cx="925.0" cy="461.6" r="4" fill="#d06425"/>
-<polyline points="100.0,272.1 273.7,127.5 490.8,96.6 925.0,166.5" fill="none" stroke="#16845b" stroke-width="2.7"/>
-<path d="M 100.0 282.7 V 261.5 M 96.0 282.7 H 104.0 M 96.0 261.5 H 104.0" stroke="#16845b"/>
-<circle cx="100.0" cy="272.1" r="4" fill="#16845b"/>
-<path d="M 273.7 180.9 V 74.0 M 269.7 180.9 H 277.7 M 269.7 74.0 H 277.7" stroke="#16845b"/>
-<circle cx="273.7" cy="127.5" r="4" fill="#16845b"/>
-<path d="M 490.8 158.3 V 34.9 M 486.8 158.3 H 494.8 M 486.8 34.9 H 494.8" stroke="#16845b"/>
+<polyline points="100.0,226.7 273.7,230.8 490.8,210.9 925.0,227.8" fill="none" stroke="#245b9e" stroke-width="2.7"/>
+<path d="M 100.0 245.9 V 207.5 M 96.0 245.9 H 104.0 M 96.0 207.5 H 104.0" stroke="#245b9e"/>
+<circle cx="100.0" cy="226.7" r="4" fill="#245b9e"/>
+<path d="M 273.7 237.9 V 223.8 M 269.7 237.9 H 277.7 M 269.7 223.8 H 277.7" stroke="#245b9e"/>
+<circle cx="273.7" cy="230.8" r="4" fill="#245b9e"/>
+<path d="M 490.8 276.4 V 145.5 M 486.8 276.4 H 494.8 M 486.8 145.5 H 494.8" stroke="#245b9e"/>
+<circle cx="490.8" cy="210.9" r="4" fill="#245b9e"/>
+<path d="M 925.0 249.0 V 206.6 M 921.0 249.0 H 929.0 M 921.0 206.6 H 929.0" stroke="#245b9e"/>
+<circle cx="925.0" cy="227.8" r="4" fill="#245b9e"/>
+<polyline points="100.0,457.8 273.7,451.6 490.8,452.7 925.0,453.0" fill="none" stroke="#d06425" stroke-width="2.7"/>
+<path d="M 100.0 459.5 V 456.0 M 96.0 459.5 H 104.0 M 96.0 456.0 H 104.0" stroke="#d06425"/>
+<circle cx="100.0" cy="457.8" r="4" fill="#d06425"/>
+<path d="M 273.7 457.0 V 446.1 M 269.7 457.0 H 277.7 M 269.7 446.1 H 277.7" stroke="#d06425"/>
+<circle cx="273.7" cy="451.6" r="4" fill="#d06425"/>
+<path d="M 490.8 460.6 V 444.7 M 486.8 460.6 H 494.8 M 486.8 444.7 H 494.8" stroke="#d06425"/>
+<circle cx="490.8" cy="452.7" r="4" fill="#d06425"/>
+<path d="M 925.0 457.5 V 448.4 M 921.0 457.5 H 929.0 M 921.0 448.4 H 929.0" stroke="#d06425"/>
+<circle cx="925.0" cy="453.0" r="4" fill="#d06425"/>
+<polyline points="100.0,277.5 273.7,182.1 490.8,96.6 925.0,118.9" fill="none" stroke="#16845b" stroke-width="2.7"/>
+<path d="M 100.0 294.9 V 260.0 M 96.0 294.9 H 104.0 M 96.0 260.0 H 104.0" stroke="#16845b"/>
+<circle cx="100.0" cy="277.5" r="4" fill="#16845b"/>
+<path d="M 273.7 199.6 V 164.6 M 269.7 199.6 H 277.7 M 269.7 164.6 H 277.7" stroke="#16845b"/>
+<circle cx="273.7" cy="182.1" r="4" fill="#16845b"/>
+<path d="M 490.8 203.6 V -10.5 M 486.8 203.6 H 494.8 M 486.8 -10.5 H 494.8" stroke="#16845b"/>
 <circle cx="490.8" cy="96.6" r="4" fill="#16845b"/>
-<path d="M 925.0 219.0 V 113.9 M 921.0 219.0 H 929.0 M 921.0 113.9 H 929.0" stroke="#16845b"/>
-<circle cx="925.0" cy="166.5" r="4" fill="#16845b"/>
+<path d="M 925.0 149.7 V 88.2 M 921.0 149.7 H 929.0 M 921.0 88.2 H 929.0" stroke="#16845b"/>
+<circle cx="925.0" cy="118.9" r="4" fill="#16845b"/>
 <text x="100.0" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">200</text>
 <text x="273.7" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">1000</text>
 <text x="490.8" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">2000</text>

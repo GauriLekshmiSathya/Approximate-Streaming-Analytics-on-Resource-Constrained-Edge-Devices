@@ -1,5 +1,5 @@
 {
-  "output": "results/dv_oasrs/synthetic",
+  "output": "results\\dv_oasrs\\synthetic",
   "records": 20000,
   "runs": 5,
   "budgets": [

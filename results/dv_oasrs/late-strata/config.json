@@ -9,7 +9,7 @@
     53
   ],
   "interval": 10000,
-  "output": "results/dv_oasrs/late-strata",
+  "output": "results\\dv_oasrs\\late-strata",
   "strata": [
     "S1",
     "S2",

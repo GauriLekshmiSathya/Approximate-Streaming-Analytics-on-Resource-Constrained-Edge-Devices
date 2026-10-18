@@ -1,5 +1,5 @@
 {
-  "file": "/Users/arjunmnath/code/streaming/data/data.txt",
+  "file": "data\\data.txt.gz",
   "budgets": [
     270,
     540,

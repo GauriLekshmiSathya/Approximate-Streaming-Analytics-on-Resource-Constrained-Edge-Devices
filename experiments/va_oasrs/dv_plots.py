@@ -73,7 +73,7 @@ def write_chart(path: Path, title: str, xlabel: str, ylabel: str,
                 f'<text x="{lx+28}" y="{ly+4}" font-family="sans-serif" font-size="12">{html.escape(label)}</text>']
     out.append('</svg>')
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("\n".join(out))
+    path.write_text("\n".join(out), encoding="utf-8")
 
 
 def aggregate(rows: list[dict[str, str]], xkey: str, ykey: str,

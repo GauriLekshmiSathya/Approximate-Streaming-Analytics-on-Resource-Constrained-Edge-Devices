@@ -2,56 +2,56 @@
 <rect width="100%" height="100%" fill="white"/>
 <text x="480.0" y="30" text-anchor="middle" font-family="sans-serif" font-size="20">Variance-skew stream: throughput vs sample budget</text>
 <path d="M 100 490.0 H 925" stroke="#e5e7eb"/>
-<text x="88" y="494.0" text-anchor="end" font-family="sans-serif" font-size="12">-1.53e+05</text>
+<text x="88" y="494.0" text-anchor="end" font-family="sans-serif" font-size="12">-8.47e+04</text>
 <path d="M 100 403.6 H 925" stroke="#e5e7eb"/>
-<text x="88" y="407.6" text-anchor="end" font-family="sans-serif" font-size="12">1.56e+06</text>
+<text x="88" y="407.6" text-anchor="end" font-family="sans-serif" font-size="12">8.64e+05</text>
 <path d="M 100 317.2 H 925" stroke="#e5e7eb"/>
-<text x="88" y="321.2" text-anchor="end" font-family="sans-serif" font-size="12">3.28e+06</text>
+<text x="88" y="321.2" text-anchor="end" font-family="sans-serif" font-size="12">1.81e+06</text>
 <path d="M 100 230.8 H 925" stroke="#e5e7eb"/>
-<text x="88" y="234.8" text-anchor="end" font-family="sans-serif" font-size="12">5e+06</text>
+<text x="88" y="234.8" text-anchor="end" font-family="sans-serif" font-size="12">2.76e+06</text>
 <path d="M 100 144.4 H 925" stroke="#e5e7eb"/>
-<text x="88" y="148.4" text-anchor="end" font-family="sans-serif" font-size="12">6.72e+06</text>
+<text x="88" y="148.4" text-anchor="end" font-family="sans-serif" font-size="12">3.71e+06</text>
 <path d="M 100 58.0 H 925" stroke="#e5e7eb"/>
-<text x="88" y="62.0" text-anchor="end" font-family="sans-serif" font-size="12">8.43e+06</text>
+<text x="88" y="62.0" text-anchor="end" font-family="sans-serif" font-size="12">4.66e+06</text>
 <path d="M 100 58 V 490 H 925" fill="none" stroke="#333" stroke-width="1.3"/>
 <text x="480.0" y="568" text-anchor="middle" font-family="sans-serif" font-size="14">Global sampling budget (records)</text>
 <text transform="translate(25 295.0) rotate(-90)" text-anchor="middle" font-family="sans-serif" font-size="14">Replay throughput (records/s)</text>
-<polyline points="100.0,422.7 273.7,435.3 490.8,439.6 925.0,445.1" fill="none" stroke="#245b9e" stroke-width="2.7"/>
-<path d="M 100.0 422.7 V 422.7 M 96.0 422.7 H 104.0 M 96.0 422.7 H 104.0" stroke="#245b9e"/>
-<circle cx="100.0" cy="422.7" r="4" fill="#245b9e"/>
-<path d="M 273.7 435.3 V 435.3 M 269.7 435.3 H 277.7 M 269.7 435.3 H 277.7" stroke="#245b9e"/>
-<circle cx="273.7" cy="435.3" r="4" fill="#245b9e"/>
-<path d="M 490.8 439.6 V 439.6 M 486.8 439.6 H 494.8 M 486.8 439.6 H 494.8" stroke="#245b9e"/>
-<circle cx="490.8" cy="439.6" r="4" fill="#245b9e"/>
-<path d="M 925.0 445.1 V 445.1 M 921.0 445.1 H 929.0 M 921.0 445.1 H 929.0" stroke="#245b9e"/>
-<circle cx="925.0" cy="445.1" r="4" fill="#245b9e"/>
-<polyline points="100.0,320.3 273.7,329.4 490.8,335.7 925.0,340.4" fill="none" stroke="#d06425" stroke-width="2.7"/>
-<path d="M 100.0 320.3 V 320.3 M 96.0 320.3 H 104.0 M 96.0 320.3 H 104.0" stroke="#d06425"/>
-<circle cx="100.0" cy="320.3" r="4" fill="#d06425"/>
-<path d="M 273.7 329.4 V 329.4 M 269.7 329.4 H 277.7 M 269.7 329.4 H 277.7" stroke="#d06425"/>
-<circle cx="273.7" cy="329.4" r="4" fill="#d06425"/>
-<path d="M 490.8 335.7 V 335.7 M 486.8 335.7 H 494.8 M 486.8 335.7 H 494.8" stroke="#d06425"/>
-<circle cx="490.8" cy="335.7" r="4" fill="#d06425"/>
-<path d="M 925.0 340.4 V 340.4 M 921.0 340.4 H 929.0 M 921.0 340.4 H 929.0" stroke="#d06425"/>
-<circle cx="925.0" cy="340.4" r="4" fill="#d06425"/>
-<polyline points="100.0,396.5 273.7,399.7 490.8,398.6 925.0,396.9" fill="none" stroke="#16845b" stroke-width="2.7"/>
-<path d="M 100.0 396.5 V 396.5 M 96.0 396.5 H 104.0 M 96.0 396.5 H 104.0" stroke="#16845b"/>
-<circle cx="100.0" cy="396.5" r="4" fill="#16845b"/>
-<path d="M 273.7 399.7 V 399.7 M 269.7 399.7 H 277.7 M 269.7 399.7 H 277.7" stroke="#16845b"/>
-<circle cx="273.7" cy="399.7" r="4" fill="#16845b"/>
-<path d="M 490.8 398.6 V 398.6 M 486.8 398.6 H 494.8 M 486.8 398.6 H 494.8" stroke="#16845b"/>
-<circle cx="490.8" cy="398.6" r="4" fill="#16845b"/>
-<path d="M 925.0 396.9 V 396.9 M 921.0 396.9 H 929.0 M 921.0 396.9 H 929.0" stroke="#16845b"/>
-<circle cx="925.0" cy="396.9" r="4" fill="#16845b"/>
-<polyline points="100.0,96.6 273.7,183.6 490.8,224.6 925.0,261.0" fill="none" stroke="#8953a6" stroke-width="2.7"/>
+<polyline points="100.0,419.7 273.7,428.7 490.8,437.7 925.0,440.0" fill="none" stroke="#245b9e" stroke-width="2.7"/>
+<path d="M 100.0 419.7 V 419.7 M 96.0 419.7 H 104.0 M 96.0 419.7 H 104.0" stroke="#245b9e"/>
+<circle cx="100.0" cy="419.7" r="4" fill="#245b9e"/>
+<path d="M 273.7 428.7 V 428.7 M 269.7 428.7 H 277.7 M 269.7 428.7 H 277.7" stroke="#245b9e"/>
+<circle cx="273.7" cy="428.7" r="4" fill="#245b9e"/>
+<path d="M 490.8 437.7 V 437.7 M 486.8 437.7 H 494.8 M 486.8 437.7 H 494.8" stroke="#245b9e"/>
+<circle cx="490.8" cy="437.7" r="4" fill="#245b9e"/>
+<path d="M 925.0 440.0 V 440.0 M 921.0 440.0 H 929.0 M 921.0 440.0 H 929.0" stroke="#245b9e"/>
+<circle cx="925.0" cy="440.0" r="4" fill="#245b9e"/>
+<polyline points="100.0,318.9 273.7,307.1 490.8,315.3 925.0,340.8" fill="none" stroke="#d06425" stroke-width="2.7"/>
+<path d="M 100.0 318.9 V 318.9 M 96.0 318.9 H 104.0 M 96.0 318.9 H 104.0" stroke="#d06425"/>
+<circle cx="100.0" cy="318.9" r="4" fill="#d06425"/>
+<path d="M 273.7 307.1 V 307.1 M 269.7 307.1 H 277.7 M 269.7 307.1 H 277.7" stroke="#d06425"/>
+<circle cx="273.7" cy="307.1" r="4" fill="#d06425"/>
+<path d="M 490.8 315.3 V 315.3 M 486.8 315.3 H 494.8 M 486.8 315.3 H 494.8" stroke="#d06425"/>
+<circle cx="490.8" cy="315.3" r="4" fill="#d06425"/>
+<path d="M 925.0 340.8 V 340.8 M 921.0 340.8 H 929.0 M 921.0 340.8 H 929.0" stroke="#d06425"/>
+<circle cx="925.0" cy="340.8" r="4" fill="#d06425"/>
+<polyline points="100.0,390.0 273.7,392.2 490.8,397.2 925.0,391.5" fill="none" stroke="#16845b" stroke-width="2.7"/>
+<path d="M 100.0 390.0 V 390.0 M 96.0 390.0 H 104.0 M 96.0 390.0 H 104.0" stroke="#16845b"/>
+<circle cx="100.0" cy="390.0" r="4" fill="#16845b"/>
+<path d="M 273.7 392.2 V 392.2 M 269.7 392.2 H 277.7 M 269.7 392.2 H 277.7" stroke="#16845b"/>
+<circle cx="273.7" cy="392.2" r="4" fill="#16845b"/>
+<path d="M 490.8 397.2 V 397.2 M 486.8 397.2 H 494.8 M 486.8 397.2 H 494.8" stroke="#16845b"/>
+<circle cx="490.8" cy="397.2" r="4" fill="#16845b"/>
+<path d="M 925.0 391.5 V 391.5 M 921.0 391.5 H 929.0 M 921.0 391.5 H 929.0" stroke="#16845b"/>
+<circle cx="925.0" cy="391.5" r="4" fill="#16845b"/>
+<polyline points="100.0,96.6 273.7,155.3 490.8,194.3 925.0,274.9" fill="none" stroke="#8953a6" stroke-width="2.7"/>
 <path d="M 100.0 96.6 V 96.6 M 96.0 96.6 H 104.0 M 96.0 96.6 H 104.0" stroke="#8953a6"/>
 <circle cx="100.0" cy="96.6" r="4" fill="#8953a6"/>
-<path d="M 273.7 183.6 V 183.6 M 269.7 183.6 H 277.7 M 269.7 183.6 H 277.7" stroke="#8953a6"/>
-<circle cx="273.7" cy="183.6" r="4" fill="#8953a6"/>
-<path d="M 490.8 224.6 V 224.6 M 486.8 224.6 H 494.8 M 486.8 224.6 H 494.8" stroke="#8953a6"/>
-<circle cx="490.8" cy="224.6" r="4" fill="#8953a6"/>
-<path d="M 925.0 261.0 V 261.0 M 921.0 261.0 H 929.0 M 921.0 261.0 H 929.0" stroke="#8953a6"/>
-<circle cx="925.0" cy="261.0" r="4" fill="#8953a6"/>
+<path d="M 273.7 155.3 V 155.3 M 269.7 155.3 H 277.7 M 269.7 155.3 H 277.7" stroke="#8953a6"/>
+<circle cx="273.7" cy="155.3" r="4" fill="#8953a6"/>
+<path d="M 490.8 194.3 V 194.3 M 486.8 194.3 H 494.8 M 486.8 194.3 H 494.8" stroke="#8953a6"/>
+<circle cx="490.8" cy="194.3" r="4" fill="#8953a6"/>
+<path d="M 925.0 274.9 V 274.9 M 921.0 274.9 H 929.0 M 921.0 274.9 H 929.0" stroke="#8953a6"/>
+<circle cx="925.0" cy="274.9" r="4" fill="#8953a6"/>
 <text x="100.0" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">200</text>
 <text x="273.7" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">1000</text>
 <text x="490.8" y="512" text-anchor="middle" font-family="sans-serif" font-size="11">2000</text>
