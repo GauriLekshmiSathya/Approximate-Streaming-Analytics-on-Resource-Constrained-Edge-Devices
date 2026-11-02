@@ -1,0 +1,284 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{enumitem}
+
+\title{Theoretical Foundations of Variance-Aware Online Adaptive Stratified Reservoir Sampling}
+\author{Research notes for the Apache Flink evaluation}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document describes the statistical foundations and methodological distinctions among exact stream processing, uniform reservoir sampling, Online Adaptive Stratified Reservoir Sampling (OASRS) as used in StreamApprox, Static Variance-Aware OASRS (VA-OASRS), and Dynamic Variance-Aware OASRS (DV-OASRS). The central contribution under study is to use online estimates of within-stratum variability when allocating a fixed sample budget, and then to recompute that allocation as a stream evolves. Dynamic allocation requires care: changing the requested size of an ordinary Algorithm-R reservoir does not in general preserve a uniform sample of the complete stratum history. DV-OASRS therefore uses a bounded random-priority candidate reservoir, whose prefixes remain valid simple random samples for any supported capacity. The document states the relevant estimators, assumptions, validity conditions, trade-offs, and departures from the StreamApprox baseline. It presents methodology rather than empirical findings; measured claims belong in the results report and must be generated from experiment outputs.
+\end{abstract}
+
+\tableofcontents
+
+\section{Scope and Notation}
+
+The method is intended for a stream partitioned by a natural key, such as a sensor identifier. Let $i\in\{1,\ldots,X\}$ index active strata. At stream time $t$, stratum $i$ has contributed $C_i(t)$ records with numeric query values $x_{i1},\ldots,x_{iC_i(t)}$. Write
+\begin{align}
+ C(t) &= \sum_i C_i(t), &
+ \mu_i(t) &= \frac{1}{C_i(t)}\sum_{j=1}^{C_i(t)}x_{ij},\\
+ T(t) &= \sum_i C_i(t)\mu_i(t), &
+ \mu(t) &= \frac{T(t)}{C(t)}.
+\end{align}
+The global sample budget is $B$. The active sample size in stratum $i$ is $n_i(t)$, with $0\le n_i(t)\le C_i(t)$ and $\sum_i n_i(t)\le B$. When the budget is available and enough observations exist, the design aims to use $B$ records. A per-stratum expansion weight is $w_i=C_i/n_i$ when $n_i>0$; if the whole stratum is retained, its weight is one.
+
+For a fixed finite stratum, define its finite-population variance as
+\begin{equation}
+ S_i^2 = \frac{1}{C_i-1}\sum_{j=1}^{C_i}(x_{ij}-\mu_i)^2,
+\end{equation}
+when $C_i>1$. Online algorithms do not know $S_i^2$ in advance. They use information observed by the current stream time only.
+
+\section{Exact and Sampling-Based Stream Processing}
+
+Exact processing evaluates a query over every input record. It yields the exact aggregate, but its per-record query work scales with the full arrival rate. Sampling-based processing retains a bounded subset and estimates aggregates from it. Its computational and memory cost can be lower, at the expense of sampling error and the need for a valid estimator.
+
+\subsection{Uniform Reservoir Sampling}
+
+Algorithm R maintains a uniform sample of size $B$ from a stream prefix without storing the prefix. The first $B$ records are retained. For the $k$th record, $k>B$, an integer $J$ is drawn uniformly from $\{1,\ldots,k\}$; record $k$ replaces slot $J$ if $J\le B$. Each of the $k$ observations consequently has inclusion probability $B/k$. The sample mean is unbiased for the finite-stream mean under this design. Uniform sampling does not explicitly preserve rare sources or represent source-specific sample sizes, and it can have high error when strata differ in population size or within-stratum variation.
+
+\subsection{Stratified Simple Random Sampling}
+
+Under stratified sampling, a simple random sample without replacement (SRSWOR) is drawn independently within each stratum. Given capacity $n_i$, each member of stratum $i$ has inclusion probability $\pi_{ij}=n_i/C_i$. The expansion estimator of a stratum total and the combined total are
+\begin{equation}
+ \widehat{T}_i=C_i\bar{x}_{i,s},\qquad
+ \widehat{T}=\sum_i\widehat{T}_i,
+ \qquad
+ \bar{x}_{i,s}=\frac{1}{n_i}\sum_{j\in s_i}x_{ij}.
+\end{equation}
+The corresponding global mean estimator is $\widehat{\mu}=\widehat{T}/C$. Conditional on fixed stratum populations and capacities, these are design-unbiased when each non-census stratum has a nonempty SRSWOR sample. If $n_i=C_i$, the stratum total is exact. The estimator can also be written in record-weight form as $\widehat{T}=\sum_i\sum_{j\in s_i}w_i x_{ij}$ with $w_i=C_i/n_i$.
+
+For independent SRSWOR samples, the finite-population variance of the total estimator is
+\begin{equation}
+ \operatorname{Var}(\widehat{T}\mid\{n_i\})
+ =\sum_i C_i^2\left(1-\frac{n_i}{C_i}\right)\frac{S_i^2}{n_i}
+ =\sum_i\left(\frac{C_i^2S_i^2}{n_i}-C_iS_i^2\right).
+ \label{eq:strat-var}
+\end{equation}
+The mean variance is the total variance divided by $C^2$. These expressions explain why the allocation matters independently of the estimator: different $n_i$ values change the variance while preserving the expansion form.
+
+\section{StreamApprox and the OASRS Baseline}
+
+\subsection{StreamApprox Context}
+
+StreamApprox is an approximate stream analytics system described by Le Quoc et al. at ACM Middleware 2017. It uses stratification by input sub-stream/source and online reservoir sampling to construct samples for approximate query processing. Its system-level design includes approximate analytics and error estimation; it is not merely a reservoir-sampling algorithm. The original paper is the research baseline for this work. The equations and implementation notes below distinguish the paper's conceptual algorithm from choices made in this repository.
+
+\subsection{OASRS Operation}
+
+The paper's Algorithm 3, Online Adaptive Stratified Reservoir Sampling, processes records online, associates each record with a sub-stream, maintains stratum counts and samples, and obtains per-stratum sample sizes through a capacity-allocation function (commonly denoted by a routine such as \texttt{getSampleSize}). A new stratum can be discovered when its first record arrives; prior knowledge of all source identifiers is not a requirement. Each stratum's reservoir uses reservoir-sampling semantics. For stratum $i$, let $C_i$ be observations seen and $Y_i$ be observations retained. Its expansion weight is $C_i/Y_i$ when subsampled and one when all records are held.
+
+The paper's capacity-allocation policy is part of the baseline methodology and should be reproduced as specified when comparing against the original system. An implementation must not silently substitute a different capacity rule and still call it an exact reproduction. In the Python prototype in this repository, the OASRS implementation exposes a configurable per-stratum capacity and uses Algorithm R independently per stratum; experiments that impose a global budget or equal capacities should document that explicit operational choice. This distinction matters because the abstract OASRS design and a particular experimental capacity policy are not identical objects.
+
+At a given query epoch, the estimated total and mean are formed from per-stratum weighted samples:
+\begin{equation}
+ \widehat{T}_{\mathrm{OASRS}}=\sum_i\frac{C_i}{Y_i}\sum_{j\in s_i}x_{ij},\qquad
+ \widehat{\mu}_{\mathrm{OASRS}}=\frac{\widehat{T}_{\mathrm{OASRS}}}{\sum_i C_i}.
+ \label{eq:expansion}
+\end{equation}
+Counts and sample sizes are needed alongside the sampled values. Treating the sample as an unweighted set generally estimates a different quantity when strata have different sampling fractions.
+
+\subsection{Uncertainty Estimation}
+
+For $Y_i>1$, the within-sample variance is
+\begin{equation}
+ s_i^2=\frac{1}{Y_i-1}\sum_{j\in s_i}(x_{ij}-\bar{x}_{i,s})^2.
+\end{equation}
+The usual plug-in SRSWOR variance estimate for the total is
+\begin{equation}
+ \widehat{\operatorname{Var}}(\widehat{T})
+ =\sum_i C_i^2\left(1-\frac{Y_i}{C_i}\right)\frac{s_i^2}{Y_i}
+ =\sum_i C_i(C_i-Y_i)\frac{s_i^2}{Y_i},
+ \label{eq:total-var-est}
+\end{equation}
+with terms set to zero for census strata. The mean variance estimate is the total variance estimate divided by $C^2$, equivalently
+\begin{equation}
+ \widehat{\operatorname{Var}}(\widehat{\mu})
+ =\sum_i\left(\frac{C_i}{C}\right)^2
+   \left(1-\frac{Y_i}{C_i}\right)\frac{s_i^2}{Y_i}.
+\end{equation}
+A normal interval such as estimate $\pm 1.96$ estimated standard errors is an approximation. Its coverage depends on sample sizes, distributional shape, and the validity of the variance estimator; it must not be described as a rigorous finite-sample guarantee without additional assumptions or a separate proof. In particular, a stratum with zero or one sampled observation does not supply a reliable empirical variance estimate.
+
+\section{Neyman Allocation and Variance-Aware Sampling}
+
+\subsection{Deriving the Allocation Rule}
+
+Suppose $C_i$ and $S_i$ are known and sampling costs are equal. Ignoring the finite-population correction term $-C_iS_i^2$, which is constant with respect to $n_i$, minimizing Equation~\ref{eq:strat-var} under $\sum_i n_i=B$ reduces to
+\begin{equation}
+ \min_{n_i>0}\sum_i\frac{C_i^2S_i^2}{n_i}
+ \quad\text{subject to}\quad \sum_i n_i=B.
+\end{equation}
+The Lagrangian derivative gives $-C_i^2S_i^2/n_i^2+\lambda=0$, hence $n_i\propto C_iS_i$. Normalization yields the classical Neyman allocation
+\begin{equation}
+ n_i^*=B\frac{C_iS_i}{\sum_j C_jS_j}.
+ \label{eq:neyman}
+\end{equation}
+For a mean rather than a total, the variance differs by the constant factor $1/C^2$, so the minimizing allocation is unchanged. With per-observation costs $c_i$, the continuous cost-constrained analogue is proportional to $C_iS_i/\sqrt{c_i}$. Equation~\ref{eq:neyman} is an oracle result: a stream processor must estimate the counts and standard deviations online, and integer capacities must satisfy feasibility constraints.
+
+\subsection{Static VA-OASRS}
+
+Static VA-OASRS is the one-shot variance-aware extension. It gathers online counts and Welford statistics during a pilot/burn-in phase, then computes scores
+\begin{equation}
+ q_i=C_i\widehat{S}_i,\qquad \widehat{S}_i=\sqrt{\widehat{S}_i^2},
+ \label{eq:static-score}
+\end{equation}
+and allocates the budget approximately in proportion to these scores. A small-sample fallback is needed because variance is undefined for a single observation. The continuous allocation is converted to integer capacities using deterministic largest-remainder rounding, subject to configured per-active-stratum minima, maxima, and population feasibility. If the minimum requirement exceeds the global budget, the allocation problem is infeasible and must be reported as such rather than silently violating the budget.
+
+In the repository prototype, the pilot maintains a bounded Algorithm-R reservoir for each discovered stratum. At the allocation point, reducing an Algorithm-R reservoir to a smaller size by selecting a uniformly random subset of its retained records preserves a uniform sample at that point. The implementation then freezes capacities. This one-shot design avoids the invalid expansion of a conventional reservoir after historical observations have already been discarded. Its main limitations are a stale allocation after burn-in and temporary worst-case candidate storage proportional to the number of strata times the global budget.
+
+The conceptual contribution of VA-OASRS is not that it first calculates variance: StreamApprox/OASRS also uses sample variance for uncertainty estimates. The contribution is using estimated variance as an input to the sample-budget allocation decision. The static method tests whether this information improves allocation once, while retaining an OASRS-style stratified expansion estimator.
+
+\section{Dynamic Variance-Aware OASRS}
+
+\subsection{Online Statistics and Allocation Score}
+
+DV-OASRS adds periodic allocation updates and explicit handling of newly discovered strata. For every arriving value $x$ in stratum $i$, Welford's numerically stable recurrence maintains count $C_i$, mean $m_i$, and centered sum of squares $M_{2,i}$:
+\begin{align}
+ C_i'&=C_i+1, & \delta&=x-m_i,\\
+ m_i'&=m_i+\frac{\delta}{C_i'}, &
+ M_{2,i}'&=M_{2,i}+\delta(x-m_i').
+\end{align}
+The sample variance is $M_{2,i}/(C_i-1)$ for $C_i>1$. The current implementation also maintains an exponentially weighted variance for responsiveness to changing distributions. With smoothing parameter $\alpha\in(0,1]$, old exponential mean $u_i$, old exponential variance $v_i$, and new value $x$, the recurrence is
+\begin{align}
+ u_i' &=u_i+\alpha(x-u_i),\\
+ v_i' &=(1-\alpha)\left[v_i+\alpha(x-u_i)^2\right].
+\end{align}
+The score used by the current DV-OASRS implementation is
+\begin{equation}
+ q_i(t)=C_i(t)\sqrt{\max(v_i(t),\epsilon)},
+ \label{eq:dynamic-score}
+\end{equation}
+where $\epsilon>0$ is a numerical/small-sample floor. The count term represents population/arrival mass; the standard-deviation term represents within-stratum statistical difficulty. Unlike a variance plug-in used only after sampling, this score affects requested sample capacity.
+
+At configured record intervals, and immediately when a new stratum is discovered, the method converts the scores into integer capacities. Its unconstrained target is the empirical analogue of Equation~\ref{eq:neyman}:
+\begin{equation}
+ n_i^{\mathrm{target}}(t)\approx B\frac{q_i(t)}{\sum_jq_j(t)}.
+\end{equation}
+The target is projected onto capacity constraints: minimum capacity for active strata, per-stratum maximums, and $n_i\le C_i$. Largest-remainder rounding makes the result deterministic for fixed scores and ties. Hysteresis limits the magnitude of a capacity move at a periodic update, reducing oscillation. A new active stratum receives its minimum immediately, then participates in subsequent allocation cycles. Feasible runs satisfy $\sum_i n_i\le B$ (typically equality when enough records and feasible minima exist).
+
+\subsection{Valid Dynamic Reservoir Semantics}
+
+Changing a plain Algorithm-R capacity is not automatically valid. If a reservoir currently holds a uniform $n$-subset of $C$ historical items, it can be reduced by taking a uniform subset. But if the capacity is later increased to $n'>n$, the reservoir lacks the discarded historical items. Filling the extra slots from future arrivals does not yield a uniform $n'$-subset of all $C'$ observations: old and new observations have different inclusion probabilities. Repeated shrink/expand operations therefore require a design that accounts for inclusion probabilities, or retained history/replay.
+
+DV-OASRS uses random priorities to avoid that failure. On arrival, every record receives an independent continuous priority $U_{ij}\sim\operatorname{Uniform}(0,1)$. For each stratum, the algorithm retains the $B$ records with largest priorities. At any point, the active sample of size $n_i\le B$ is the top $n_i$ priorities among all $C_i$ records seen. Since i.i.d. continuous priorities induce a uniformly random ordering, the top $n_i$ are an SRSWOR of size $n_i$ from the stratum. Thus every record has inclusion probability
+\begin{equation}
+ \pi_{ij}(t)=\min\left(1,\frac{n_i(t)}{C_i(t)}\right),
+\end{equation}
+and the capacity-$n_i$ sample has the usual without-replacement joint inclusion probabilities. Crucially, all capacities up to $B$ correspond to nested prefixes of the same random priority ordering. Reallocation changes the active prefix length, not the underlying design or the relative priorities of retained records.
+
+The allocation statistics are computed from record values and counts, but reservoir priorities are independently generated. Conditional on a fixed realized stratum history and the chosen capacities, the within-stratum priority ordering is uniform. Therefore, when $n_i>0$, $C_i\bar{x}_{i,s}$ is design-unbiased for that realized stratum total. The allocation can depend on values without invalidating this conditional argument because it does not depend on the independent random priorities. If an implementation were to use sampled values or priorities in a way that couples allocation to the sampled subset, this argument would need to be revisited.
+
+The candidate pool is bounded by $B$ per stratum, so worst-case candidate memory is $O(XB)$, rather than $O(B)$ globally. This is the deliberate cost that permits arbitrary per-stratum capacity prefixes and late discovery under the current design. It must be included in any memory comparison. The active query sample still obeys the global budget, even though the hidden candidate pool may be larger.
+
+\subsection{Estimator and Uncertainty}
+
+For the active sample in each stratum, DV-OASRS uses the same expansion estimator as OASRS, Equation~\ref{eq:expansion}, with $Y_i=n_i$ (or $Y_i=C_i$ for a census). This keeps the estimand and weighting methodology comparable across methods. Conditional on capacities, the usual variance expression in Equation~\ref{eq:strat-var} applies to the priority-derived SRSWOR samples. Replacing $S_i^2$ with the sample variance yields a plug-in uncertainty estimate, not an automatic finite-sample coverage guarantee. Very small samples, evolving query windows, and non-stationary values can weaken normal-interval calibration. Confidence interval coverage must therefore be measured separately.
+
+The formula above applies to a fixed finite stream prefix (or a precisely defined query window). For event-time windows, the implementation must define which records contribute to $C_i$, the sample, and the target; state expiration and late events must use consistent window semantics. A whole-history count combined with a window-only sample would not estimate the stated window aggregate.
+
+\subsection{Late Strata and Distribution Changes}
+
+When a previously unseen key arrives, DV-OASRS creates count, variance, and priority state for that stratum. Its priority candidate pool starts with the new record, and an immediate allocation cycle assigns at least the configured feasible minimum. The stratum is included in later score-based reallocation. This differs from a one-shot pilot that may never include a late sensor in its allocation. A minimum allocation does not guarantee high precision for a rare stratum; it guarantees representation subject to the global budget feasibility condition.
+
+The exponential variance estimate can respond to a changed within-stratum distribution, but DV-OASRS does not thereby implement a formal drift detector. It does not test whether a change occurred or guarantee a recovery time. Responsiveness depends on $\alpha$, reallocation interval, and hysteresis: large $\alpha$ and short intervals respond faster but can be noisy and computationally costly; smaller $\alpha$ and strong hysteresis are more stable but retain stale allocations longer. Distribution-shift experiments should report the operational definition of response time and measure allocation and query error before and after the shift.
+
+\subsection{Pseudocode}
+
+\begin{algorithm}[ht]
+\caption{DV-OASRS update and allocation (conceptual)}
+\begin{algorithmic}[1]
+\Require Global active-sample budget $B$, interval $R$, minimum $m$, smoothing $\alpha$
+\State Initialize empty per-stratum statistics and priority candidate pools
+\For{each arriving record $(i,x,r)$}
+  \If{$i$ is new}
+    \State Create stratum state; assign an independent random priority to record $r$
+  \Else
+    \State Assign an independent random priority to record $r$
+  \EndIf
+  \State Update $C_i,m_i,M_{2,i}$ using Welford's recurrence
+  \State Update exponential variance $v_i$ using $\alpha$
+  \State Retain $r$ only if it belongs to the top $B$ priorities for stratum $i$
+  \If{$i$ is new or $R$ records elapsed since last allocation}
+    \State Compute scores $q_j=C_j\sqrt{\max(v_j,\epsilon)}$ for active strata $j$
+    \State Compute constrained integer capacities using deterministic largest remainder
+    \State Apply configured hysteresis while preserving a feasible total budget
+    \State Set each active sample to the top $n_j$ priorities of its candidate pool
+  \EndIf
+\EndFor
+\State Estimate totals/means using per-stratum expansion weights $C_i/n_i$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Complexity}
+
+For each record, Welford/EMA updates take $O(1)$ arithmetic. Maintaining a size-$B$ min-heap of priorities costs $O(\log B)$ when a record enters/replaces a candidate and $O(1)$ to reject it after comparing against the heap minimum. A full reallocation over $X$ active strata is at least $O(X)$, plus the cost of deterministic allocation and sorting/tie resolution (typically $O(X\log X)$). If reallocation occurs every $R$ records, its amortized allocation cost is approximately $O(X\log X/R)$ per input record, apart from data-structure and serialization costs. Candidate memory is $O(XB)$; counts/statistics are $O(X)$. Actual runtime cost depends on record size, stratum cardinality, language/runtime, parallelism, and how allocations are coordinated.
+
+\section{How the Methods Differ}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{p{0.19\linewidth}p{0.19\linewidth}p{0.18\linewidth}p{0.18\linewidth}p{0.18\linewidth}}
+\toprule
+Property & Uniform reservoir & OASRS & Static VA-OASRS & DV-OASRS\\
+\midrule
+Stratifies by source & No & Yes & Yes & Yes\\
+Variance used for allocation & No & Not the defining allocation contribution & Yes, once & Yes, periodically\\
+New strata & Global sample only & Discovered online & Pilot discovery, but allocation is frozen & Immediate state and minimum allocation\\
+Capacity changes & Not applicable & Per configured baseline policy & One allocation, then frozen & Repeated allocation up to $B$\\
+Reservoir semantics & Global Algorithm R & Independent per-stratum reservoirs & Algorithm-R pilot and uniform downsample & Per-stratum top-$B$ random priorities\\
+Main cost/risk & May underrepresent strata & Depends on capacity policy & Stale allocation; pilot memory & $O(XB)$ candidate memory and allocation overhead\\
+\bottomrule
+\end{tabular}
+\caption{Methodological distinctions. Exact OASRS capacity behavior depends on the capacity function specified by the baseline configuration; the table does not substitute an undocumented capacity rule for the original paper.}
+\label{tab:methods}
+\end{table}
+
+In summary, the lineage is:
+\begin{enumerate}[label=\arabic*.]
+ \item \textbf{StreamApprox/OASRS:} stratify incoming records and maintain online per-stratum reservoirs; use weights and variance estimates for approximate query answers and uncertainty.
+ \item \textbf{Static VA-OASRS:} add a Neyman-style rule that uses observed $C_i$ and estimated standard deviations to allocate the global budget once.
+ \item \textbf{DV-OASRS:} periodically recompute that allocation using online population and smoothed variance information, handle newly discovered strata, and use a priority candidate design so capacity changes preserve SRSWOR validity.
+\end{enumerate}
+
+\section{Assumptions, Limits, and Evaluation Implications}
+
+The theoretical argument relies on: (i) a well-defined natural stratum key; (ii) independent random priorities; (iii) capacity decisions not using those priorities; (iv) $n_i\le B$ and feasible minimum allocations; (v) matching count/sample/window populations; and (vi) correct expansion weights. Allocation based on $C_i\widehat{S}_i$ is optimal only under the idealized fixed-population, equal-cost Neyman objective when the standard deviations are known and constraints are inactive. Estimated variances, small strata, allocation floors/caps, smoothing, and hysteresis can move the implemented design away from that optimum. For multiple query fields, a single value-key variance score optimizes at most the field used to calculate that score; a joint or query-specific allocation policy is a separate design choice.
+
+The priority proof establishes a valid within-stratum sample for any selected capacity up to $B$. It does not establish that the dynamic allocation is globally optimal, that a confidence interval has nominal coverage, or that the system improves throughput. Those are empirical questions. Results must compare the same input sequence, query, window, and active budget; report the candidate-memory overhead; separate Python prototype measurements from Flink measurements; and retain negative as well as positive findings. The previous static Intel result with a sensor discovered after the one-shot allocation is invalid as evidence for static VA-OASRS accuracy and should not be presented as a valid comparison. DV-OASRS must be evaluated afresh using the natural sensor identifier (for that dataset, \texttt{mote\_id}) and online discovery.
+
+\section{Relationship to a Flink Implementation}
+
+The sampling theory is independent of a particular stream processor. A Flink implementation must nevertheless preserve the mathematical state and coordination semantics. Per-key counts and variance statistics can be managed as keyed state. A priority candidate heap can also be keyed state, but enforcing one global active budget across distributed subtasks requires an explicit coordination design; independent per-subtask budgets do not automatically sum to a globally fixed budget. Allocation epochs, checkpoint restoration, key migration, and event-time window expiration must maintain consistent sample and population counts. Unless a concrete job configures and verifies checkpointing and sink guarantees, this document makes no exactly-once claim. Python prototype correctness and Flink execution correctness are separate validation steps.
+
+\section{References}
+
+\begin{thebibliography}{9}
+\bibitem{streamapprox}
+D. Le Quoc, R. Chen, P. Bhatotia, C. Fetzer, V. Hilt, and T. Strufe.
+\newblock StreamApprox: Approximate Computing for Stream Analytics.
+\newblock In \emph{Proceedings of the 18th ACM/IFIP/USENIX Middleware Conference}, 2017.
+\newblock DOI: \href{https://doi.org/10.1145/3135974.3135989}{10.1145/3135974.3135989}.
+\newblock Author manuscript: \url{https://www.ruichuan.org/papers/streamapprox-middleware17.pdf}.
+
+\bibitem{vitter}
+J. S. Vitter.
+\newblock Random Sampling with a Reservoir.
+\newblock \emph{ACM Transactions on Mathematical Software}, 11(1):37--57, 1985.
+\newblock DOI: \href{https://doi.org/10.1145/3147.3165}{10.1145/3147.3165}.
+
+\bibitem{cochran}
+W. G. Cochran.
+\newblock \emph{Sampling Techniques}, 3rd edition.
+\newblock John Wiley \& Sons, 1977.
+\end{thebibliography}
+
+\end{document}
